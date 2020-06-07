@@ -1,0 +1,207 @@
+---
+title: "Introduction to ForeCA"
+author: "Georg M. Goerg"
+date: "May 10, 2020"
+output: html_document
+---
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{An Introduction to the ForeCA R package}
+-->
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(cache = TRUE)
+```
+
+The **ForeCA** R package implements forecastable compoenent analysis (ForeCA).
+
+```{r load-packages, cache=FALSE, message = FALSE}
+library(ForeCA)
+```
+
+
+If you don't know about ForeCA yet, the next section gives a quick
+overview.  If you know ForeCA already you can skip it and go straight to 
+the examples.
+
+## What is ForeCA?
+
+Forecastable component analysis (ForeCA) is a novel dimension reduction (DR)
+technique for multivariate time series.  Similar to other DR methods **ForeCA**
+tries to find an "__interesting__" linear combination $y_t = \mathbf{w}' X_t$ of
+a multivariate time series $\mathbf{X}_t$.  For principal component analysis
+(PCA) *high variance* data is interesting; for slow feature analysis (SFA)
+*slow* signals are interesting.  **ForeCA** tries to find linear combinations
+that are easy to forecast, i.e., __forecastable__ -- hence the name.
+
+
+The measure of forecastability, denoted as $\Omega(y_t)$, is based on the
+spectral entropy of $y_t$, i.e., the entropy of the spectral density
+$f_y(\lambda)$: high entropy means low forecastability; low entropy signals are
+easy to forecast.
+
+For more details please see the ForeCA paper(s):
+```{r cite-ForeCA}
+citation("ForeCA")
+```
+
+# Specifying estimation settings
+
+ForeCA uses two main estimation techniques:
+
+  * spectral density estimation of multivariate (or univariate) time series 
+    $\mathbf{X}_t$ (or $y_t$);
+  * Shannon entropy estimation of a univariate probability mass function.
+
+The **ForeCA** package achieves this via
+
+  * the **sapa** and **astsa** package for good non-parametric estimates 
+    of the spectrum, and 
+  * simple plugin estimates of Shannon entropy
+   (`discrete_entropy` / `continuous_entropy`) with optional prior smoothing.
+
+In this package details of those two estimator are specified via
+`spectrum.control` and `entropy.control` arguments (lists).  For sake of
+simplicity let's fix them here and use those settings all throughout the
+examples.
+
+```{r set-controls}
+# spectrum control
+sc <- list(method = "wosa")
+# entropy control
+ec <- list(prior.weight = 1e-2)
+```
+
+For more options and detailed explanations see `?complete-controls`.
+
+# Example: European stock market data
+
+```{r load-eu-stock-markets}
+data("EuStockMarkets")
+```
+
+The `EuStockMarkets` data contains daily closing prices for `r
+ncol(EuStockMarkets)` major European stock markets.  As usual we convert this to
+log-returns to make the time series stationary.
+
+
+```{r eu-stock-markets}
+# log-returns in %
+ret <- ts(diff(log(EuStockMarkets)) * 100)
+```
+
+## Time series EDA
+
+`ret` contains time series of `r ncol(ret)` major European stock indices (see
+`?EuStockMarkets` for details). 
+
+```{r plot-returns, cache = FALSE, echo = FALSE}
+plot(ret)
+```
+
+```{r cor-matrix}
+cor.ret <- cor(ret)
+kable(format(cor.ret, digits = 2), 
+      caption = "Correlation matrix")
+kable(format(solve(cor.ret), digits = 2),
+      caption = "Conditional covariance given other variables")
+```
+
+The correlation matrix shows that they are highly correlated with each other and
+the partial autocorrelation function (PACF) and spectra show that they are
+slightly autocorrelated.
+
+```{r acf-spectra}
+ret.spec <- mvspectrum(ret, spectrum.control = sc)
+plot(ret.spec)
+layout(matrix(seq_len(ncol(ret)), ncol = 2))
+for (nn in colnames(ret)) {
+  pacf(ret[, nn], main = nn)
+}
+```
+
+Not surprisingly the PACF shows only very small partial correlations, since
+these are stock market return and we should not expect see too large
+correlations over time (cf. ["no arbitrage"
+hypothesis](http://en.wikipedia.org/wiki/Arbitrage)).
+
+More specifically, we can estimate ForeCA measure of forecastability, $\Omega$,
+for each series:
+
+```{r omega-eu-stocks}
+ret.omega <- Omega(ret, spectrum.control = sc, entropy.control = ec)
+ret.omega
+```
+
+According to the estimates `r names(which.min(ret.omega))` is the least
+forecastable, `r names(which.max(ret.omega))` is the most forecastable stock
+market.
+
+However, we can ask if there are linear combinations of stock markets, i.e., a
+*portfolio*, that are even easier to forecast.  That's exactly what ForeCA is
+doing.
+
+## foreca(): find forecastable components
+
+The main function in the package is `foreca()`, which should be straightforward
+to use as it resembles `princomp` for PCA or `fastICA` for independent component
+anlaysis (ICA). In the basic setting users only have to pass the multivariate
+time series and the number of components (`n.comp` -- by default it uses `2`).
+We also specify `spectrum.control` and `entropy.control` but this is optional.
+
+```{r foreca-returns}
+mod.foreca.ret <- foreca(ret, n.comp = ncol(ret), 
+                         spectrum.control = sc,
+                         entropy.control = ec)
+```
+```{r show-results}
+mod.foreca.ret  # this uses the print.foreca method
+```
+
+For ease of use and better integration with existing methods in R, the returned
+`foreca` objects are very similar to `princomp` objects, i.e., they have
+`$scores` and `$loadings` (and many other useful metrics).
+
+```{r str-foreca-ret, eval = FALSE}
+str(mod.foreca.ret) # too much to display; try it out!
+```
+
+The console print out showed that ForeCA indeed worked and it could find linear
+combinations that were more forecastable than any of the original series. The
+$\Omega$ score of the forecastable components (ForeCs) are
+
+```{r foreca-ret-omega}
+mod.foreca.ret$Omega
+```
+
+Recall that the most forecastable original time series had $\hat{\Omega} = 
+`r round(max(ret.omega), 2)`$ (use `summary(mod.foreca.ret)$Omega.orig)` to get
+them).  The loadings of the ForeCs tell us what this forecastable portfolio looks like:
+
+```{r foreca-ret-loadings}
+mod.foreca.ret$loadings
+```
+
+# S3 methods
+
+The **ForeCA** package implements several `S3` methods for objects of class
+`foreca` so that results can be quickly visualized and easily interpreted.
+
+```{r foreca-returns-summary}
+plot(mod.foreca.ret)
+plot(ts(mod.foreca.ret$scores))
+```
+
+By design of ForeCA, the returned series are uncorrelated and have zero mean and
+unit variance.
+
+```{r foreca-unit-variance-check}
+round(colMeans(mod.foreca.ret$scores), 3)
+kable(round(cov(mod.foreca.ret$scores), digits = 3))
+```
+
+# Session info
+
+```{r session-info}
+sessionInfo()
+```
