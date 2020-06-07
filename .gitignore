@@ -1,0 +1,21 @@
+# Ignore everything
+/*
+
+# Don't ignore specific files (the specific R package structure)
+!README.md
+!/R
+!/src
+!/man
+!/data
+!/inst
+!/tests
+!/vignettes
+!DESCRIPTION
+!NAMESPACE
+!NEWS.md
+!.gitignore
+
+# Add specific files again to ignore
+*~
+.Rhistory
+/tests/testthat/Rplots.pdf
