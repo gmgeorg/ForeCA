@@ -9,6 +9,20 @@ of multivariate time series that are most forecastable, where forecastability is
 
 ## Installation
 
+**UPDATE**: As of 2020-06-09 **ForeCA** has been removed from CRAN, because
+the **ifultools** / **sapa** dependecies are no longer maintained.  I am working
+on an update to **ForeCA** to not rely on these packages, but only rely on **astsa**
+for multivariate specturm estimation. See `NEWS.md` for details.
+
+In the meantime you can install the ForeCA package directly from
+github as
+```{r}
+library(devtools)
+devtools::install_github("gmgeorg/ForeCA")
+```
+
+**Temporarily not working**
+
 You can install the stable version on
 [CRAN](https://cran.r-project.org/package=ForeCA):
 

@@ -1,5 +1,17 @@
 # ForeCA Release Notes
 
+## v0.2.6-1 
+
+* remove all dependencies and calls to **sapa** R package.  In particular this
+  means no `"wosa"`, `"multitaper"`, or `"direct"` spectral `method` argument
+  anymore. Instead rely on `"mvspec"` in the **astsa** package.
+  
+  This is (unfortunately) necessary since **ifultools** and all its dependencies
+  were removed from CRAN by 2020-06-09. **sapa** was the workhorse package for
+  **ForeCA**, so I am actively looking for a replacement in R.
+  Current best bet: the **psd** package once they push the multivariate estimation
+  to the CRAN (currently only available in dev version on github -- see [issue](https://github.com/abarbour/psd/issues/6)).
+
 ## v0.2.5 (May 2020)
 
 * make `ForeCA` compatible with R 4.0.0

@@ -2,7 +2,7 @@ Package: ForeCA
 Type: Package
 Title: Forecastable Component Analysis
 Version: 0.2.6-1
-Date: 2020-05-08
+Date: 2020-06-14
 Authors@R: 
     person(given = "Georg M.",
            family = "Goerg",
@@ -21,12 +21,12 @@ Depends:
     R (>= 3.5.0)
 License: GPL-2
 Imports:
+    astsa (>= 1.10),
     MASS,
     graphics,
     reshape2 (>= 1.4.4),
     utils
 Suggests:
-    astsa (>= 1.10),
     fBasics,
     knitr,
     mgcv,
