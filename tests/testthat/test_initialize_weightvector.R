@@ -13,7 +13,7 @@ kTimeSeries[, 1] <- arima.sim(kNumObs, model = list(ar = 0.9))
 kTimeSeries[, 2] <- arima.sim(kNumObs, model = list(ar = -0.5))
 
 kWhitened <- whiten(kTimeSeries)$U
-f.U.tmp <- mvspectrum(kWhitened, "wosa", normalize = TRUE)
+f.U.tmp <- mvspectrum(kWhitened, "mvspec", normalize = TRUE)
 
 for (mm in kAvailableMethods) {
   test.msg <- paste0("Testing method ", mm, "\n")

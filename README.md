@@ -1,5 +1,8 @@
 # ForeCA R package
 
+[![](https://cranlogs.r-pkg.org/badges/ForeCA)](https://cran.r-project.org/package=ForeCA)
+
+
 **ForeCA** implements *Forecastable component analysis* in R.  For details on algorithm & methodology see [*Forecastable Component Analysis*, JMLR, Goerg (2013)](http://proceedings.mlr.press/v28/goerg13.pdf).
 
 
@@ -39,7 +42,7 @@ library(ForeCA)
 citation("ForeCA")
 ```
 
-For a tutorial on how to use `foreca()` and the entire **ForeCA** suite of functions see the [introductory vignette](https://cran.r-project.org/web/packages/ForeCA/vignettes/Introduction.html) on CRAN. 
+For a tutorial on how to use `foreca()` and the entire **ForeCA** suite of functions see the [introductory vignette](https://CRAN.R-project.org/package=ForeCA/vignettes/Introduction.html) on CRAN. 
 
 ## References
 
