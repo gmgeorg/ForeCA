@@ -14,7 +14,7 @@ attr(yy.UU, "whitened") <- TRUE
 
 yy.Series <- kSeries %*% t(ww0)
 
-kSpectrumMethods <- c("direct", "wosa", "multitaper", "mvspec", "pgram")
+kSpectrumMethods <- c("mvspec", "pgram")
 
 context("foreca.EM.E_step")
 for (mm in kSpectrumMethods) {
