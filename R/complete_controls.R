@@ -159,7 +159,7 @@ complete_entropy_control <- function(entropy.control =
 #' \item{kernel}{R function; function to weigh each Fourier frequency \eqn{\lambda}; 
 #' default: \code{NULL} (no re-weighting).}
 #' \item{method}{string; method to estimate the spectrum; default: 
-#' \code{'wosa'} if \pkg{sapa} is installed, \code{'mvspec'} 
+#' \code{'mvspec'} if \pkg{sapa} is installed, \code{'mvspec'} 
 #' if only \pkg{astsa} is installed, and \code{'pgram'} if
 #' neither is installed.}
 #' \item{smoothing}{logical; default: \code{FALSE}.}
@@ -187,8 +187,7 @@ complete_entropy_control <- function(entropy.control =
 
 complete_spectrum_control <- function(spectrum.control = 
                                         list(kernel = NULL, 
-                                             method = c("wosa", "direct", "multitaper", 
-                                                        "mvspec", "ar", "pgram"),
+                                             method = c("mvspec", "ar", "pgram"),
                                              smoothing = FALSE)) {
   stopifnot(inherits(spectrum.control, "list"))
   
@@ -239,13 +238,5 @@ complete_spectrum_control <- function(spectrum.control =
     spectrum.control$smoothing <- FALSE
   }
   stopifnot(is.logical(spectrum.control$smoothing))
-  
-  #if (is.null(spectrum.control$taper)) {
-  #  spectrum.control$taper <- 0.05
-  #}
-  #stopifnot(is.numeric(spectrum.control$taper),
-  #          length(spectrum.control$taper) == 1,
-  #          spectrum.control$taper >= 0)
-
   return(spectrum.control)
 }

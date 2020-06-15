@@ -18,8 +18,8 @@ complete_entropy_control(
 )
 
 complete_spectrum_control(
-  spectrum.control = list(kernel = NULL, method = c("wosa", "direct", "multitaper",
-    "mvspec", "ar", "pgram"), smoothing = FALSE)
+  spectrum.control = list(kernel = NULL, method = c("mvspec", "ar", "pgram"), smoothing
+    = FALSE)
 )
 }
 \arguments{
@@ -61,7 +61,7 @@ zero;  default: \code{0}.}
 \item{kernel}{R function; function to weigh each Fourier frequency \eqn{\lambda}; 
 default: \code{NULL} (no re-weighting).}
 \item{method}{string; method to estimate the spectrum; default: 
-\code{'wosa'} if \pkg{sapa} is installed, \code{'mvspec'} 
+\code{'mvspec'} if \pkg{sapa} is installed, \code{'mvspec'} 
 if only \pkg{astsa} is installed, and \code{'pgram'} if
 neither is installed.}
 \item{smoothing}{logical; default: \code{FALSE}.}

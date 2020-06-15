@@ -1,7 +1,5 @@
 #' @title Estimates spectrum of multivariate time series
 #' @name mvspectrum
-#' @importFrom sapa SDF
-#' @importFrom ifultools checkScalarType
 #' @description
 #' The spectrum of a multivariate time series is a matrix-valued function of the 
 #' frequency \eqn{\lambda \in [-\pi, \pi]}, which is symmetric/Hermitian around 

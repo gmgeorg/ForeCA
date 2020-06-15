@@ -1,7 +1,7 @@
 Package: ForeCA
 Type: Package
 Title: Forecastable Component Analysis
-Version: 0.2.6
+Version: 0.2.6-1
 Date: 2020-05-08
 Authors@R: 
     person(given = "Georg M.",
@@ -18,12 +18,10 @@ Description: Implementation of Forecastable Component Analysis ('ForeCA'),
     The measure of forecastability is based on the Shannon entropy of the spectral
     density of the transformed signal.
 Depends:
-    R (>= 3.5.0),
-    ifultools (>= 2.0.5)
+    R (>= 3.5.0)
 License: GPL-2
 Imports:
     MASS,
-    sapa (>= 2.0.0),
     graphics,
     reshape2 (>= 1.4.4),
     utils
