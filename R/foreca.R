@@ -162,7 +162,7 @@ foreca <- function(series, n.comp = 2, algorithm.control = list(type = "EM"),
 #'                                           list(num.starts = 2,
 #'                                                type = "EM"),
 #'                                         spectrum.control =
-#'                                           list(method = 'wosa'))
+#'                                           list(method = "mvspec"))
 #' plot(one.weight.em)
 #'
 #' @export

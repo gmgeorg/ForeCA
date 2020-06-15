@@ -107,7 +107,7 @@ of \eqn{\mathbf{w}_i} (or \eqn{\mathbf{w}_{i+1}}). This is the objective funcion
 \examples{
 XX <- diff(log(EuStockMarkets)) * 100
 UU <- whiten(XX)$U
-ff <- mvspectrum(UU, 'wosa', normalize = TRUE)
+ff <- mvspectrum(UU, 'mvspec', normalize = TRUE)
 
 ww0 <- initialize_weightvector(num.series = ncol(XX), method = 'rnorm')
 

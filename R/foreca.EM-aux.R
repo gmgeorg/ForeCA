@@ -23,7 +23,7 @@ NULL
 #' @examples
 #' XX <- diff(log(EuStockMarkets)) * 100
 #' UU <- whiten(XX)$U
-#' ff <- mvspectrum(UU, 'wosa', normalize = TRUE)
+#' ff <- mvspectrum(UU, 'mvspec', normalize = TRUE)
 #' 
 #' ww0 <- initialize_weightvector(num.series = ncol(XX), method = 'rnorm')
 #' 

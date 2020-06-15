@@ -21,7 +21,7 @@
 #' XX <- diff(log(EuStockMarkets)[100:200,]) * 100
 #' one.weight <- foreca.EM.one_weightvector(whiten(XX)$U,
 #'                                          spectrum.control =
-#'                                             list(method = "wosa"))
+#'                                             list(method = "mvspec"))
 #' }
 #'
 foreca.EM.one_weightvector <- function(U, f.U = NULL,

@@ -25,7 +25,7 @@ S3 methods for multivariate spectrum estimation.
 # see examples in 'mvspectrum'
 
 SS <- mvspectrum(diff(log(EuStockMarkets)) * 100, 
-                 spectrum.control = list(method = "multitaper"))
+                 spectrum.control = list(method = "mvspec"))
 plot(SS, log = FALSE)
 
 }

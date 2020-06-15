@@ -11,7 +11,7 @@
 \usage{
 mvspectrum(
   series,
-  method = c("pgram", "multitaper", "direct", "wosa", "mvspec", "ar"),
+  method = c("pgram", "mvspec", "multitaper", "direct", "wosa", "ar"),
   normalize = FALSE,
   smoothing = FALSE,
   ...
@@ -186,8 +186,8 @@ ss <- mvspectrum(whiten(XX)$U, normalize = TRUE)
 
 xx <- scale(rnorm(100), center = TRUE, scale = FALSE)
 var(xx)
-sum(mvspectrum(xx, normalize = FALSE, method = "direct")) * 2
-sum(mvspectrum(xx, normalize = FALSE, method = "wosa")) * 2
+sum(mvspectrum(xx, normalize = FALSE, method = "pgram")) * 2
+sum(mvspectrum(xx, normalize = FALSE, method = "mvspec")) * 2
 
 
 xx <- scale(rnorm(100), center = TRUE, scale = FALSE)
@@ -196,13 +196,13 @@ ss.n <- normalize_mvspectrum(ss)
 sum(ss.n)
 # multivariate
 UU <- whiten(matrix(rnorm(40), ncol = 2))$U
-S.U <- mvspectrum(UU, method = "wosa")
+S.U <- mvspectrum(UU, method = "mvspec")
 mvspectrum2wcov(normalize_mvspectrum(S.U))
 
 
 XX <- matrix(rnorm(1000), ncol = 2)
-SS <- mvspectrum(XX, "direct")
-ss1 <- mvspectrum(XX[, 1], "direct")
+SS <- mvspectrum(XX, "mvspec")
+ss1 <- mvspectrum(XX[, 1], "mvspec")
 
 SS.1 <- get_spectrum_from_mvspectrum(SS, 1)
 plot.default(ss1, SS.1)
@@ -213,9 +213,9 @@ XX <- matrix(arima.sim(n = 1000, list(ar = 0.9)), ncol = 4)
 beta.tmp <- rbind(1, -1, 2, 0)
 yy <- XX \%*\% beta.tmp
 
-SS <- mvspectrum(XX, "wosa")
+SS <- mvspectrum(XX, "mvspec")
 ss.yy.comb <- spectrum_of_linear_combination(SS, beta.tmp)
-ss.yy <- mvspectrum(yy, "wosa")
+ss.yy <- mvspectrum(yy, "mvspec")
 
 plot(ss.yy, log = TRUE) # using plot.mvspectrum()
 lines(ss.yy.comb, col = "red", lty = 1, lwd = 2) 

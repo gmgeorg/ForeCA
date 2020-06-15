@@ -85,7 +85,7 @@ Sigma.hat <- cov(XX)
 dimnames(Sigma.hat) <- NULL
 
 # using the frequency spectrum
-SS <- mvspectrum(XX, "wosa")
+SS <- mvspectrum(XX, "mvspec")
 Sigma.hat.freq <- mvspectrum2wcov(SS)
 
 layout(matrix(1:4, ncol = 2))
@@ -100,7 +100,7 @@ image(Sigma.hat / Sigma.hat.freq)
 # examples for entropy wcov
 XX <- diff(log(EuStockMarkets)) * 100
 UU <- whiten(XX)$U
-ff <- mvspectrum(UU, 'wosa', normalize = TRUE)
+ff <- mvspectrum(UU, "mvspec", normalize = TRUE)
 
 ww0 <- initialize_weightvector(num.series = ncol(XX), method = 'rnorm')
 

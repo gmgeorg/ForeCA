@@ -67,7 +67,7 @@ examples.
 
 ```{r set-controls}
 # spectrum control
-sc <- list(method = "wosa")
+sc <- list(method = "mvspec")
 # entropy control
 ec <- list(prior.weight = 1e-2)
 ```

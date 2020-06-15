@@ -54,15 +54,15 @@
 #' 
 #' xx <- scale(rnorm(100), center = TRUE, scale = FALSE)
 #' var(xx)
-#' sum(mvspectrum(xx, normalize = FALSE, method = "direct")) * 2
-#' sum(mvspectrum(xx, normalize = FALSE, method = "wosa")) * 2
+#' sum(mvspectrum(xx, normalize = FALSE, method = "pgram")) * 2
+#' sum(mvspectrum(xx, normalize = FALSE, method = "mvspec")) * 2
 #' 
 #' 
 
 mvspectrum <- function(series, 
                        method = 
-                         c("pgram", "multitaper", "direct", "wosa", 
-                           "mvspec", "ar"),
+                         c("pgram", "mvspec", "multitaper", "direct", "wosa", 
+                           "ar"),
                        normalize = FALSE, smoothing = FALSE, ...) {
   
   method <- match.arg(method)
@@ -198,7 +198,7 @@ mvspectrum <- function(series,
 #' sum(ss.n)
 #' # multivariate
 #' UU <- whiten(matrix(rnorm(40), ncol = 2))$U
-#' S.U <- mvspectrum(UU, method = "wosa")
+#' S.U <- mvspectrum(UU, method = "mvspec")
 #' mvspectrum2wcov(normalize_mvspectrum(S.U))
 #' 
 

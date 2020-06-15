@@ -160,7 +160,7 @@ one.weight.em <- foreca.one_weightvector(U = PW$U,
                                           list(num.starts = 2,
                                                type = "EM"),
                                         spectrum.control =
-                                          list(method = 'wosa'))
+                                          list(method = "mvspec"))
 plot(one.weight.em)
 
 \dontrun{

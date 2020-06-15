@@ -62,23 +62,23 @@ Also we can use several smoothing techniques to obtain a less variance estimate 
 
 nn <- 100
 eps <- rnorm(nn)  # white noise has Omega() = 0 in theory
-Omega(eps, spectrum.control = list(method = "direct"))
+Omega(eps, spectrum.control = list(method = "pgram"))
 # smoothing makes it closer to 0
-Omega(eps, spectrum.control = list(method = "wosa"))
+Omega(eps, spectrum.control = list(method = "mvspec"))
 
 xx <- sin(seq_len(nn) * pi / 10)
-Omega(xx, spectrum.control = list(method = "direct"))
+Omega(xx, spectrum.control = list(method = "pgram"))
 Omega(xx, entropy.control = list(threshold = 1/40))
-Omega(xx, spectrum.control = list(method = "wosa"),
+Omega(xx, spectrum.control = list(method = "mvspec"),
       entropy.control = list(threshold = 1/20))
 
 # an AR(1) with phi = 0.5
 yy <- arima.sim(n = nn, model = list(ar = 0.5))
-Omega(yy, spectrum.control = list(method = "wosa"))
+Omega(yy, spectrum.control = list(method = "mvspec"))
 
 # an AR(1) with phi = 0.9 is more forecastable
 yy <- arima.sim(n = nn, model = list(ar = 0.9))
-Omega(yy, spectrum.control = list(method = "wosa"))
+Omega(yy, spectrum.control = list(method = "mvspec"))
 
 }
 \references{

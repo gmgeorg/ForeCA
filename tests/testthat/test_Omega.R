@@ -34,7 +34,7 @@ for (mm in kMvspectrumMethods) {
 
   if (mm != "direct") {
     test_that("Non-parametric estimates have at most forecastability of direct", {
-      omegas.direct <- Omega(kTimeSeries, spectrum.control = list(method = "direct"))
+      omegas.direct <- Omega(kTimeSeries, spectrum.control = list(method = "pgram"))
       omegas <- Omega(kTimeSeries, spectrum.control = sc.tmp)
       for (ii in 1:ncol(kTimeSeries)) {
         expect_lte(round(omegas[ii], 4), round(omegas.direct[ii], 4))

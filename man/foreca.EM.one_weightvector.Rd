@@ -52,7 +52,7 @@ using an EM-like algorithm (see References).
 XX <- diff(log(EuStockMarkets)[100:200,]) * 100
 one.weight <- foreca.EM.one_weightvector(whiten(XX)$U,
                                          spectrum.control =
-                                            list(method = "wosa"))
+                                            list(method = "mvspec"))
 }
 
 }
