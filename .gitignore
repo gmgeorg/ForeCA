@@ -19,3 +19,4 @@
 *~
 .Rhistory
 /tests/testthat/Rplots.pdf
+.Rbuildignore
