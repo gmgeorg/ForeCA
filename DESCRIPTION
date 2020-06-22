@@ -33,6 +33,7 @@ Suggests:
     nlme (>= 3.1-64),
     testthat (>= 2.0.0),
     rSFA,
+    sapa,
 RoxygenNote: 7.1.0
 Encoding: UTF-8
 VignetteBuilder: knitr
