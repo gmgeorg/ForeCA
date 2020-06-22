@@ -209,9 +209,7 @@ complete_spectrum_control <- function(spectrum.control =
   }
   
   if (is.null(spectrum.control$method)) {
-    if (requireNamespace("sapa", quietly = TRUE)) {
-      spectrum.control$method <- "wosa"
-    } else if (requireNamespace("astsa", quietly = TRUE)) {
+    if (requireNamespace("astsa", quietly = TRUE)) {
       spectrum.control$method <- "mvspec"
     } else {
       spectrum.control$method <- "pgram"
@@ -223,10 +221,9 @@ complete_spectrum_control <- function(spectrum.control =
   stopifnot(is.character(spectrum.control$method),
             length(spectrum.control$method) == 1)
   if (spectrum.control$method %in% c("wosa", "multitaper", "direct")) {
-    if (!requireNamespace("sapa", quietly = TRUE)) {
-      stop("For method '", spectrum.control$method, "' you need the 'sapa' package.\n",
-           "\t Please install it or user another method.")
-    }    
+    stop(paste0("Method '", method, "' is not supported anymore.  The 'sapa' package ",
+                 "has been deprecated on CRAN.  Either use ForeCA v0.2.6 or use a different ",
+                 "'method' argument."))
   } else if (spectrum.control$method == "mvspec") {
     if (!requireNamespace("astsa", quietly = TRUE)) {
       stop("For method '", spectrum.control$method, "' you need the 'astsa' package.\n",

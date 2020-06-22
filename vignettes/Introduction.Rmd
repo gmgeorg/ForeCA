@@ -55,8 +55,7 @@ ForeCA uses two main estimation techniques:
 
 The **ForeCA** package achieves this via
 
-  * the **sapa** and **astsa** package for good non-parametric estimates 
-    of the spectrum, and 
+  * **astsa** package for good non-parametric estimates of the spectrum, and 
   * simple plugin estimates of Shannon entropy
    (`discrete_entropy` / `continuous_entropy`) with optional prior smoothing.
 
@@ -87,7 +86,7 @@ log-returns to make the time series stationary.
 
 ```{r eu-stock-markets}
 # log-returns in %
-ret <- ts(diff(log(EuStockMarkets)) * 100)
+ret <- diff(log(EuStockMarkets)) * 100
 ```
 
 ## Time series EDA
@@ -189,7 +188,7 @@ The **ForeCA** package implements several `S3` methods for objects of class
 
 ```{r foreca-returns-summary}
 plot(mod.foreca.ret)
-plot(ts(mod.foreca.ret$scores))
+plot(mod.foreca.ret$scores)
 ```
 
 By design of ForeCA, the returned series are uncorrelated and have zero mean and

@@ -91,7 +91,6 @@ mvspectrum <- function(series,
     # then dont allow to normalize
     series <- check_whitened(series)
   }
-  
   if (method == "mvspec") {
     stopifnot(requireNamespace("astsa", quietly = TRUE))
     out <- .mvspec2mvspectrum(astsa::mvspec(series, plot = FALSE, 
@@ -102,15 +101,9 @@ mvspectrum <- function(series,
     out <- spec.ar(c(series), method = "burg", plot = FALSE,
                    n.freq = ceiling(length(series) / 2 + 1))$spec[-1]
   } else if (method %in% c("wosa", "multitaper", "direct")) {
-    stopifnot(requireNamespace("sapa", quietly = TRUE)) 
-    out <- .SDF2mvspectrum(sdf.output = sapa::SDF(series, method = method, 
-                                                  recenter = TRUE, 
-                                                  npad = num.obs, ...))
-    if (num.series == 1) {
-      out <- array(out, dim = c(length(out), 1, 1))
-    } else {
-      out <- as.array(out)
-    }
+    stop(paste0("Method '", method, "' is not supported anymore.  The 'sapa' package ",
+                 "has been deprecated on CRAN.  Either use ForeCA v0.2.6 or use a different ",
+                 "'method' argument."))
   } else if (method == "pgram") {
     out <- mvpgram(series)
   } else {

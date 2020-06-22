@@ -1,14 +1,14 @@
 Package: ForeCA
 Type: Package
 Title: Forecastable Component Analysis
-Version: 0.2.6-1
-Date: 2020-06-14
+Version: 0.2.7
+Date: 2020-06-21
 Authors@R: 
     person(given = "Georg M.",
            family = "Goerg",
            role = c("aut", "cre"),
            email = "im@gmge.org")
-URL: http://www.gmge.org
+URL: https://github.com/gmgeorg/ForeCA
 Description: Implementation of Forecastable Component Analysis ('ForeCA'),
     including main algorithms and auxiliary function (summary, plotting, etc.) to
     apply 'ForeCA' to multivariate time series data. 'ForeCA' is a novel dimension
@@ -33,7 +33,6 @@ Suggests:
     nlme (>= 3.1-64),
     testthat (>= 2.0.0),
     rSFA,
-    sapa,
 RoxygenNote: 7.1.0
 Encoding: UTF-8
 VignetteBuilder: knitr
