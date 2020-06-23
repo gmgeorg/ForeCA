@@ -19,7 +19,7 @@
 #' use \code{"pgram"} to use \code{\link[stats]{spec.pgram}}.
 #' @param normalize logical; if \code{TRUE} the spectrum will be normalized (see 
 #' Value below for details).
-#' @param \dots additional arguments passed to \code{\link[sapa]{SDF}} or 
+#' @param \dots additional arguments passed to \code{\link[psd]{pspectrum}} or 
 #' \code{\link[astsa]{mvspec}} (e.g., \code{taper})
 #' @return 
 #' \code{mvspectrum} returns a 3D array of dimension \eqn{num.freqs \times K \times K}, where
@@ -61,8 +61,7 @@
 
 mvspectrum <- function(series, 
                        method = 
-                         c("pgram", "mvspec", "multitaper", "direct", "wosa", 
-                           "ar"),
+                         c("pspectrum", "pgram", "mvspec", "ar"),
                        normalize = FALSE, smoothing = FALSE, ...) {
   
   method <- match.arg(method)
@@ -91,7 +90,11 @@ mvspectrum <- function(series,
     # then dont allow to normalize
     series <- check_whitened(series)
   }
-  if (method == "mvspec") {
+  
+  if (method == "pspectrum") {
+    out <- .pspectrum2mvspectrum(psd::pspectrum(series, plot = FALSE, verbose=FALSE,
+                                                ...))
+  } else if (method == "mvspec") {
     stopifnot(requireNamespace("astsa", quietly = TRUE))
     out <- .mvspec2mvspectrum(astsa::mvspec(series, plot = FALSE, 
                                             detrend = FALSE, fast = FALSE, 
@@ -100,10 +103,6 @@ mvspectrum <- function(series,
     stopifnot(num.series == 1)
     out <- spec.ar(c(series), method = "burg", plot = FALSE,
                    n.freq = ceiling(length(series) / 2 + 1))$spec[-1]
-  } else if (method %in% c("wosa", "multitaper", "direct")) {
-    stop(paste0("Method '", method, "' is not supported anymore.  The 'sapa' package ",
-                 "has been deprecated on CRAN.  Either use ForeCA v0.2.6 or use a different ",
-                 "'method' argument."))
   } else if (method == "pgram") {
     out <- mvpgram(series)
   } else {
