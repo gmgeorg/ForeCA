@@ -221,7 +221,7 @@ complete_spectrum_control <- function(spectrum.control =
   stopifnot(is.character(spectrum.control$method),
             length(spectrum.control$method) == 1)
   if (spectrum.control$method %in% c("wosa", "multitaper", "direct")) {
-    stop(paste0("Method '", method, "' is not supported anymore.  The 'sapa' package ",
+    stop(paste0("Method '", spectrum.control$method, "' is not supported anymore.  The 'sapa' package ",
                  "has been deprecated on CRAN.  Either use ForeCA v0.2.6 or use a different ",
                  "'method' argument."))
   } else if (spectrum.control$method == "mvspec") {

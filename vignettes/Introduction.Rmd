@@ -1,7 +1,7 @@
 ---
 title: "Introduction to ForeCA"
 author: "Georg M. Goerg"
-date: "May 10, 2020"
+date: "May 21, 2020"
 output: html_document
 ---
 <!--
@@ -79,8 +79,8 @@ For more options and detailed explanations see `?complete-controls`.
 data("EuStockMarkets")
 ```
 
-The `EuStockMarkets` data contains daily closing prices for `r
-ncol(EuStockMarkets)` major European stock markets.  As usual we convert this to
+The `EuStockMarkets` data contains daily closing prices for 
+`r ncol(EuStockMarkets)` major European stock markets.  As usual we convert this to
 log-returns to make the time series stationary.
 
 
