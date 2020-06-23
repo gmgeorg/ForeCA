@@ -11,7 +11,7 @@
 \usage{
 mvspectrum(
   series,
-  method = c("pgram", "mvspec", "multitaper", "direct", "wosa", "ar"),
+  method = c("pspectrum", "pgram", "mvspec", "ar"),
   normalize = FALSE,
   smoothing = FALSE,
   ...
@@ -35,8 +35,8 @@ spectrum_of_linear_combination(mvspectrum.output, beta)
 \eqn{K}-dimensional time series \eqn{\mathbf{X}_t}. Can be a \code{matrix}, \code{data.frame}, 
 or a multivariate \code{ts} object.}
 
-\item{method}{string; method for spectrum estimation; see \code{method} argument in
-\code{\link[sapa]{SDF}} (in the \pkg{sapa} package); use 
+\item{method}{string; method for spectrum estimation: use \code{"pspectrum"} for
+\code{\link[psd]{pspectrum}}; use 
 \code{"mvspec"} to use \code{\link[astsa]{mvspec}} (\pkg{astsa} package); or
 use \code{"pgram"} to use \code{\link[stats]{spec.pgram}}.}
 
@@ -50,7 +50,7 @@ for univariate spectrum. The smoothing
 parameter is chosen automatically using generalized cross-validation 
 (see \code{\link[mgcv]{gam}} for details). Default: \code{FALSE}.}
 
-\item{\dots}{additional arguments passed to \code{\link[sapa]{SDF}} or 
+\item{\dots}{additional arguments passed to \code{\link[psd]{pspectrum}} or 
 \code{\link[astsa]{mvspec}} (e.g., \code{taper})}
 
 \item{mvspectrum.output}{an object of class \code{"mvspectrum"} representing
@@ -188,6 +188,7 @@ xx <- scale(rnorm(100), center = TRUE, scale = FALSE)
 var(xx)
 sum(mvspectrum(xx, normalize = FALSE, method = "pgram")) * 2
 sum(mvspectrum(xx, normalize = FALSE, method = "mvspec")) * 2
+sum(mvspectrum(xx, normalize = FALSE, method = "pspectrum")) * 2
 
 
 xx <- scale(rnorm(100), center = TRUE, scale = FALSE)
@@ -222,7 +223,7 @@ lines(ss.yy.comb, col = "red", lty = 1, lwd = 2)
 
 }
 \references{
-See References in \code{\link[stats]{spectrum}}, \code{\link[sapa]{SDF}}, 
+See References in \code{\link[stats]{spectrum}}, \code{\link[psd]{pspectrum}}, 
 \code{\link[astsa]{mvspec}}.
 }
 \keyword{manip}

@@ -187,7 +187,7 @@ complete_entropy_control <- function(entropy.control =
 
 complete_spectrum_control <- function(spectrum.control = 
                                         list(kernel = NULL, 
-                                             method = c("mvspec", "ar", "pgram"),
+                                             method = c("pspectrum", "mvspec", "ar", "pgram"),
                                              smoothing = FALSE)) {
   stopifnot(inherits(spectrum.control, "list"))
   
@@ -209,22 +209,14 @@ complete_spectrum_control <- function(spectrum.control =
   }
   
   if (is.null(spectrum.control$method)) {
-    if (requireNamespace("astsa", quietly = TRUE)) {
-      spectrum.control$method <- "mvspec"
-    } else {
-      spectrum.control$method <- "pgram"
-    }
+    spectrum.control <- "pspectrum"
   } else if (length(spectrum.control$method) > 1) {
-    # take the first method if more than one is specified
+    # Take the first method if more than one is specified.
     spectrum.control$method <- spectrum.control$method[1]
   }
   stopifnot(is.character(spectrum.control$method),
             length(spectrum.control$method) == 1)
-  if (spectrum.control$method %in% c("wosa", "multitaper", "direct")) {
-    stop(paste0("Method '", spectrum.control$method, "' is not supported anymore.  The 'sapa' package ",
-                 "has been deprecated on CRAN.  Either use ForeCA v0.2.6 or use a different ",
-                 "'method' argument."))
-  } else if (spectrum.control$method == "mvspec") {
+  if (spectrum.control$method == "mvspec") {
     if (!requireNamespace("astsa", quietly = TRUE)) {
       stop("For method '", spectrum.control$method, "' you need the 'astsa' package.\n",
            "Please install it or user another method.")

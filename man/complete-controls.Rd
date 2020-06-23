@@ -18,8 +18,8 @@ complete_entropy_control(
 )
 
 complete_spectrum_control(
-  spectrum.control = list(kernel = NULL, method = c("mvspec", "ar", "pgram"), smoothing
-    = FALSE)
+  spectrum.control = list(kernel = NULL, method = c("pspectrum", "mvspec", "ar",
+    "pgram"), smoothing = FALSE)
 )
 }
 \arguments{

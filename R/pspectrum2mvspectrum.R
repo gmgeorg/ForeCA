@@ -13,9 +13,18 @@
 # # @keywords ts manip
 
 .pspectrum2mvspectrum <- function(pspectrum.output) {
-  f.lambda <- pspectrum.output$pspec
-  # remove frequency 0
-  f.lambda <- f.lambda[pspectrum.output$freq > 0,,]
+  if (is.null(pspectrum.output$pspec)) {
+    f.lambda <- pspectrum.output$spec
+    f.lambda[pspectrum.output$freq > 0]
+    # Turn into a 3D array (N x 1 x 1) for consistency with API.
+    dim(f.lambda) <- c(length(f.lambda), 1, 1)
+  } else {
+    f.lambda <- pspectrum.output$pspec
+    # remove frequency 0
+    f.lambda <- f.lambda[pspectrum.output$freq > 0,,]
+  }
+  # Divide by 2 to match all other normalizations for other method arguments.
+  f.lambda <- f.lambda / 2.
   attr(f.lambda, "frequency") <- pspectrum.output$freq[pspectrum.output$freq > 0] * pi
   return(f.lambda)
 } 
