@@ -91,7 +91,7 @@ mvspectrum <- function(series,
   }
   
   if (method == "pspectrum") {
-    pspectrum.output <- psd::pspectrum(series, plot = FALSE, verbose=FALSE, ...)
+    pspectrum.output <- psd::pspectrum(series, plot = FALSE, AR=TRUE, verbose=FALSE, ...)
     out <- .pspectrum2mvspectrum(pspectrum.output = pspectrum.output)
   } else if (method == "mvspec") {
     stopifnot(requireNamespace("astsa", quietly = TRUE))

@@ -73,10 +73,10 @@
 #' Available at \url{http://jmlr.org/proceedings/papers/v28/goerg13.html}.
 #' @export
 #' @examples
-#' XX <- diff(log(EuStockMarkets[c(100:200),])) * 100
+#' XX <- diff(log(EuStockMarkets)) * 100
 #' plot(ts(XX))
 #' \dontrun{
-#' ff <- foreca(XX[,1:4], n.comp = 2, plot = TRUE)
+#' ff <- foreca(XX[,1:4], n.comp = 4, plot = TRUE, spectrum.control=list(method="pspectrum"))
 #' ff
 #' summary(ff)
 #' plot(ff)
@@ -162,7 +162,7 @@ foreca <- function(series, n.comp = 2, algorithm.control = list(type = "EM"),
 #'                                           list(num.starts = 2,
 #'                                                type = "EM"),
 #'                                         spectrum.control =
-#'                                           list(method = "mvspec"))
+#'                                           list(method = "pspectrum"))
 #' plot(one.weight.em)
 #'
 #' @export
@@ -197,11 +197,6 @@ foreca.one_weightvector <- function(U, f.U = NULL,
   spectrum.control <- complete_spectrum_control(spectrum.control)
   algorithm.control <- complete_algorithm_control(algorithm.control)
 
-  num.freqs <- floor(num.obs / 2)
-  entropy.control$base <- NULL
-  entropy.control <- complete_entropy_control(entropy.control,
-                                              num.outcomes = 2 * num.freqs)
-
   if (is.null(f.U)) {
     f.U <- mvspectrum(UU, method = spectrum.control$method, normalize = TRUE,
                       ...)
@@ -216,6 +211,11 @@ foreca.one_weightvector <- function(U, f.U = NULL,
 
   Omega.best <- 0
   converged <- FALSE
+
+  num.freqs <- dim(f.U)[1]
+  entropy.control$base <- NULL
+  entropy.control <- complete_entropy_control(entropy.control,
+                                              num.outcomes = 2 * num.freqs)
 
   # Prepare arguments for any one vector algorithm
   args.for.one_weightvector.algo <-

@@ -146,7 +146,7 @@ by \code{'foreca'} output (the univariate estimates are stored in \code{$Omega.u
 XX <- diff(log(EuStockMarkets[c(100:200),])) * 100
 plot(ts(XX))
 \dontrun{
-ff <- foreca(XX[,1:4], n.comp = 2, plot = TRUE)
+ff <- foreca(XX[,1:4], n.comp = 2, plot = TRUE, spectrum.control=list(method="pspectrum"))
 ff
 summary(ff)
 plot(ff)
@@ -160,7 +160,7 @@ one.weight.em <- foreca.one_weightvector(U = PW$U,
                                           list(num.starts = 2,
                                                type = "EM"),
                                         spectrum.control =
-                                          list(method = "mvspec"))
+                                          list(method = "pspectrum"))
 plot(one.weight.em)
 
 \dontrun{

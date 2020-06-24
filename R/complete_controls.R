@@ -168,18 +168,12 @@ complete_entropy_control <- function(entropy.control =
 #' 
 #' \item{"ar"}{ autoregressive spectrum fit via \code{\link[stats]{spec.ar}}; 
 #' only for univariate time series.}
-#' \item{"direct"}{ raw periodogram using \code{\link[sapa]{SDF}}.}
-#  \item{"lag window"}{ average over a neighborhood of lags in the periodogram 
-#  estimator using \code{\link[sapa]{SDF}}.}
-#' \item{"multitaper"}{ tapering the periodogram using \code{\link[sapa]{SDF}}.}
 #' \item{"mvspec"}{ smoothed estimate using \code{\link[astsa]{mvspec}}; many tuning parameters
 #' are available -- they can be passed as additional arguments (\code{...}) 
 #' to \code{mvspectrum}.}
-#' \item{"pgram"}{ uses \code{\link{mvpgram}}; is the same as the 
-#' \code{'direct'} method, but does not rely on the \code{\link[sapa]{SDF}} 
-#' package.}
-#' \item{"wosa"}{ Welch overlapping segment averaging (WOSA) using \code{\link[sapa]{SDF}}.}
-#' 
+#' \item{"pgram"}{ raw periodogram using \code{spectrum}}
+#' \item{"pspectrum"}{ advanced non-parametric estimation of a tapered power 
+#' spectrum using \code{\link[psd]{pspectrum}}.}
 #' Setting \code{smoothing  = TRUE} will smooth the estimated spectrum
 #' (again); this option is only available for univariate time series/spectra.
 #' 
@@ -209,7 +203,7 @@ complete_spectrum_control <- function(spectrum.control =
   }
   
   if (is.null(spectrum.control$method)) {
-    spectrum.control <- "pspectrum"
+    spectrum.control$method <- "pspectrum"
   } else if (length(spectrum.control$method) > 1) {
     # Take the first method if more than one is specified.
     spectrum.control$method <- spectrum.control$method[1]

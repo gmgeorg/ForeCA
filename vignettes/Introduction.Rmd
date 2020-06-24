@@ -5,7 +5,7 @@ date: "May 21, 2020"
 output: html_document
 ---
 <!--
-%\VignetteEngine{knitr::knitr}
+%\VignetteEngine{knitr::rmarkdown}
 %\VignetteIndexEntry{An Introduction to the ForeCA R package}
 -->
 ```{r setup, include=FALSE}

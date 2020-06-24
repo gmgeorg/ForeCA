@@ -68,37 +68,43 @@
 #'
 discrete_entropy <- function(probs, base = 2, method = c("MLE"),
                              threshold = 0,
-                             prior.probs = rep(1 / length(probs), length = length(probs)),
+                             prior.probs = NULL,
                              prior.weight = 0) {
 
   stopifnot(!any(is.na(probs)),
-            prior.weight >= 0 && prior.weight <= 1)
+            prior.weight >= 0,
+            prior.weight <= 1)
 
   if (!all(round(probs, 6) >= 0)) {
     stop("Not all probabilities are non-negative.")
   }
 
-  stopifnot(all.equal(target = 1, current = sum(probs)),
-            all(round(prior.probs, 6) >= 0),
-            all.equal(target = 1, current = sum(prior.probs)))
+  stopifnot(sum(abs(sum(probs) - 1)) < 1e-6)
 
   method <- match.arg(method)
-
   # set probabilities to 0 that are below threshold (and renormalize)
   if (threshold > 0) {
     probs[probs < threshold] <- 0
     probs <- probs / sum(probs)
   }
-
+  if (is.null(prior.probs)) {
+    prior.probs <- rep(1 / length(probs), length = length(probs))
+  }
+  
+  stopifnot(length(prior.probs) == length(probs),
+            all(round(prior.probs, 6) >= 0),
+            all.equal(target = 1., current = sum(prior.probs), tolerance=1e-5))
+  
   if (prior.weight > 0) {
     # add prior
     probs <- (1 - prior.weight) * probs + prior.weight * prior.probs
   }
 
   if (any(probs == 0)) {
-    probs <- probs[probs != 0]
+    probs <- probs[np.abs(probs) > 1e-9]
   }
-  stopifnot(all.equal(target = 1, current = sum(probs)))
+  # probs <- probs / sum(probs)
+  stopifnot(all.equal(target = 1., current = sum(probs), tolerance = 1e-5))
   switch(method,
          MLE = {
            entropy.eval <- -sum(probs * log(probs, base = base))

@@ -118,6 +118,9 @@ spectral_entropy <- function(series = NULL, spectrum.control = list(),
     spec.dens <- c(rev(c(mvspectrum.output)), c(mvspectrum.output))
     spec.dens[spec.dens < 0] <- 0
     spec.dens <- spec.dens / sum(spec.dens)
+    entropy.control <- complete_entropy_control(entropy.control,
+                                                num.outcomes = length(spec.dens))
+    entropy.control$prior.probs <- NULL
     spec.ent <- do.call("discrete_entropy", 
                         c(list(probs = spec.dens), entropy.control))
   }

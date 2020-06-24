@@ -77,7 +77,7 @@ combination.}
  \item num.freqs is the number of frequencies
  \item K is the number of series (columns in \code{series}).
 }
-Note that it also has an attribute \code{"normalized"} which is
+It also has an \code{"normalized"} attribute, which is
 \code{FALSE} if \code{normalize = FALSE}; otherwise \code{TRUE}.
 See \code{normalize_mvspectrum} for details.
 
@@ -177,7 +177,7 @@ dim(ss3d)
 ss3d[2,,] # at omega_1; in general complex-valued, but Hermitian
 identical(ss3d[2,,], Conj(t(ss3d[2,,]))) # is Hermitian
 
-ss <- mvspectrum(XX[, 1], smoothing = TRUE)
+ss <- mvspectrum(XX[, 1], method="pspectrum", smoothing = TRUE)
 
 \dontrun{
   mvspectrum(XX, normalize = TRUE)
@@ -189,7 +189,6 @@ var(xx)
 sum(mvspectrum(xx, normalize = FALSE, method = "pgram")) * 2
 sum(mvspectrum(xx, normalize = FALSE, method = "mvspec")) * 2
 sum(mvspectrum(xx, normalize = FALSE, method = "pspectrum")) * 2
-
 
 xx <- scale(rnorm(100), center = TRUE, scale = FALSE)
 ss <- mvspectrum(xx)

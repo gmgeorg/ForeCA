@@ -117,15 +117,17 @@ check_whitened <- function(data, check.attribute.only = TRUE) {
 
     equals <- list()
     equals[["zero-mean"]] <- all.equal(target = rep(0, num.vars),
-                                       current = center,
+                                       current = center, tolerance=1e-6,
                                        check.names = FALSE,
                                        check.attributes = FALSE)
     equals[["unit-variance"]] <- all.equal(target = rep(1, num.vars),
                                            current = sd.data,
+                                           tolerance = 1e-6,
                                            check.names = FALSE,
                                            check.attributes = FALSE)
     equals[["uncorrelated"]] <- all.equal(target = diag(1, num.vars),
                                           current = cor(data),
+                                          tolerance = 1e-6,
                                           check.names = FALSE,
                                           check.attributes = FALSE)
 
@@ -145,8 +147,8 @@ check_whitened <- function(data, check.attribute.only = TRUE) {
     }
   } else {
     if (!isTRUE(attr(data, "whitened"))) {
-      stop("Attribute 'whitened' says the data is not whitened. Please",
-           "run whiten() beforehand.  To find out why the data is not",
+      stop("Attribute 'whitened=FALSE'. ",
+           "Run whiten() beforehand.  To find out why the data is not",
            "whitened, run check_whitened(..., check.attribute.only = FALSE).")
     }
   }
