@@ -101,7 +101,7 @@ discrete_entropy <- function(probs, base = 2, method = c("MLE"),
   }
 
   if (any(probs == 0)) {
-    probs <- probs[np.abs(probs) > 1e-9]
+    probs <- probs[abs(probs) > 1e-9]
   }
   # probs <- probs / sum(probs)
   stopifnot(all.equal(target = 1., current = sum(probs), tolerance = 1e-5))

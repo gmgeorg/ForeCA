@@ -11,7 +11,7 @@
 \usage{
 mvspectrum(
   series,
-  method = c("pspectrum", "pgram", "mvspec", "ar"),
+  method = c("mvspec", "pgram", "pspectrum", "ar"),
   normalize = FALSE,
   smoothing = FALSE,
   ...
@@ -176,10 +176,8 @@ dim(ss3d)
 
 ss3d[2,,] # at omega_1; in general complex-valued, but Hermitian
 identical(ss3d[2,,], Conj(t(ss3d[2,,]))) # is Hermitian
-
-ss <- mvspectrum(XX[, 1], method="pspectrum", smoothing = TRUE)
-
 \dontrun{
+  ss <- mvspectrum(XX[, 1], method="pspectrum", smoothing = TRUE)
   mvspectrum(XX, normalize = TRUE)
 }
 ss <- mvspectrum(whiten(XX)$U, normalize = TRUE)
@@ -188,8 +186,9 @@ xx <- scale(rnorm(100), center = TRUE, scale = FALSE)
 var(xx)
 sum(mvspectrum(xx, normalize = FALSE, method = "pgram")) * 2
 sum(mvspectrum(xx, normalize = FALSE, method = "mvspec")) * 2
-sum(mvspectrum(xx, normalize = FALSE, method = "pspectrum")) * 2
-
+\dontrun{
+  sum(mvspectrum(xx, normalize = FALSE, method = "pspectrum")) * 2
+}
 xx <- scale(rnorm(100), center = TRUE, scale = FALSE)
 ss <- mvspectrum(xx)
 ss.n <- normalize_mvspectrum(ss)

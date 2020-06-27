@@ -181,7 +181,7 @@ complete_entropy_control <- function(entropy.control =
 
 complete_spectrum_control <- function(spectrum.control = 
                                         list(kernel = NULL, 
-                                             method = c("pspectrum", "mvspec", "ar", "pgram"),
+                                             method = c("mvspec", "pspectrum", "ar", "pgram"),
                                              smoothing = FALSE)) {
   stopifnot(inherits(spectrum.control, "list"))
   
@@ -203,7 +203,7 @@ complete_spectrum_control <- function(spectrum.control =
   }
   
   if (is.null(spectrum.control$method)) {
-    spectrum.control$method <- "pspectrum"
+    spectrum.control$method <- "mvspec"
   } else if (length(spectrum.control$method) > 1) {
     # Take the first method if more than one is specified.
     spectrum.control$method <- spectrum.control$method[1]

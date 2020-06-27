@@ -44,10 +44,8 @@
 #' 
 #' ss3d[2,,] # at omega_1; in general complex-valued, but Hermitian
 #' identical(ss3d[2,,], Conj(t(ss3d[2,,]))) # is Hermitian
-#' 
-#' ss <- mvspectrum(XX[, 1], method="pspectrum", smoothing = TRUE)
-#' 
 #' \dontrun{
+#'   ss <- mvspectrum(XX[, 1], method="pspectrum", smoothing = TRUE)
 #'   mvspectrum(XX, normalize = TRUE)
 #' }
 #' ss <- mvspectrum(whiten(XX)$U, normalize = TRUE)
@@ -56,11 +54,12 @@
 #' var(xx)
 #' sum(mvspectrum(xx, normalize = FALSE, method = "pgram")) * 2
 #' sum(mvspectrum(xx, normalize = FALSE, method = "mvspec")) * 2
-#' sum(mvspectrum(xx, normalize = FALSE, method = "pspectrum")) * 2
-#' 
+#' \dontrun{
+#'   sum(mvspectrum(xx, normalize = FALSE, method = "pspectrum")) * 2
+#' }
 
 mvspectrum <- function(series, 
-                       method = c("pspectrum", "pgram", "mvspec", "ar"),
+                       method = c("mvspec", "pgram", "pspectrum", "ar"),
                        normalize = FALSE, smoothing = FALSE, ...) {
   
   method <- match.arg(method)
@@ -91,11 +90,11 @@ mvspectrum <- function(series,
   }
   
   if (method == "pspectrum") {
-    pspectrum.output <- psd::pspectrum(series, plot = FALSE, AR=TRUE, verbose=FALSE, ...)
+    pspectrum.output <- psd::pspectrum(series, plot = FALSE, verbose=FALSE, niter = 10, ...)
     out <- .pspectrum2mvspectrum(pspectrum.output = pspectrum.output)
   } else if (method == "mvspec") {
     stopifnot(requireNamespace("astsa", quietly = TRUE))
-    out <- .mvspec2mvspectrum(astsa::mvspec(series, plot = FALSE, 
+    out <- .mvspec2mvspectrum(astsa::mvspec(series, plot = FALSE, taper=0.0,
                                             detrend = FALSE, fast = FALSE, 
                                             ...))
   } else if (method == "ar") {

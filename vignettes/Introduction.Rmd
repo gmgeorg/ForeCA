@@ -5,7 +5,7 @@ date: "May 21, 2020"
 output: html_document
 ---
 <!--
-%\VignetteEngine{knitr::rmarkdown}
+%\VignetteEngine{knitr::knitr}
 %\VignetteIndexEntry{An Introduction to the ForeCA R package}
 -->
 ```{r setup, include=FALSE}
@@ -111,7 +111,7 @@ the partial autocorrelation function (PACF) and spectra show that they are
 slightly autocorrelated.
 
 ```{r acf-spectra}
-ret.spec <- mvspectrum(ret, spectrum.control = sc)
+ret.spec <- mvspectrum(ret, method = sc$method)
 plot(ret.spec)
 layout(matrix(seq_len(ncol(ret)), ncol = 2))
 for (nn in colnames(ret)) {

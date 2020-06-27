@@ -18,7 +18,7 @@ complete_entropy_control(
 )
 
 complete_spectrum_control(
-  spectrum.control = list(kernel = NULL, method = c("pspectrum", "mvspec", "ar",
+  spectrum.control = list(kernel = NULL, method = c("mvspec", "pspectrum", "ar",
     "pgram"), smoothing = FALSE)
 )
 }

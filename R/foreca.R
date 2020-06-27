@@ -155,6 +155,7 @@ foreca <- function(series, n.comp = 2, algorithm.control = list(type = "EM"),
 #' with larges \code{\link{Omega}}.
 #' @examples
 #'
+#' \dontrun{
 #' PW <- whiten(XX)
 #' one.weight.em <- foreca.one_weightvector(U = PW$U,
 #'                                         dewhitening = PW$dewhitening,
@@ -162,9 +163,9 @@ foreca <- function(series, n.comp = 2, algorithm.control = list(type = "EM"),
 #'                                           list(num.starts = 2,
 #'                                                type = "EM"),
 #'                                         spectrum.control =
-#'                                           list(method = "pspectrum"))
+#'                                           list(method = "mvspec"))
 #' plot(one.weight.em)
-#'
+#' }
 #' @export
 
 foreca.one_weightvector <- function(U, f.U = NULL,

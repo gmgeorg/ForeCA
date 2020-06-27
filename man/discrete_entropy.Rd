@@ -9,7 +9,7 @@ discrete_entropy(
   base = 2,
   method = c("MLE"),
   threshold = 0,
-  prior.probs = rep(1/length(probs), length = length(probs)),
+  prior.probs = NULL,
   prior.weight = 0
 )
 }
