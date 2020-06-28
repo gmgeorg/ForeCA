@@ -1,5 +1,14 @@
 # ForeCA Release Notes
 
+## 0.2.7
+
+* add `pspectrum` from **psd** package as a replacement for `sapa::SDF`.  Not recommended for
+  use in production yet since `psd::psectrum` does not preserve spectrum estimates from
+  multivariate spectrum to univariate, i.e., spectrum of linear combination does not equal
+  linear combination (quadratic form) of spectrum.  `psd::pspectrum` an be used to compute
+  univariate forecastability estimates based on a better (smoothed) estimates of periodogram
+  compared to raw `spec.pgram`.
+
 ## v0.2.6-1 
 
 * remove all dependencies and calls to **sapa** R package.  In particular this
@@ -8,9 +17,7 @@
   
   This is (unfortunately) necessary since **ifultools** and all its dependencies
   were removed from CRAN by 2020-06-09. **sapa** was the workhorse package for
-  **ForeCA**, so I am actively looking for a replacement in R.
-  Current best bet: the **psd** package once they push the multivariate estimation
-  to the CRAN (currently only available in dev version on github -- see [issue](https://github.com/abarbour/psd/issues/6)).
+  **ForeCA**.
 
 ## v0.2.5 (May 2020)
 
