@@ -189,6 +189,7 @@ sum(mvspectrum(xx, normalize = FALSE, method = "mvspec")) * 2
 \dontrun{
   sum(mvspectrum(xx, normalize = FALSE, method = "pspectrum")) * 2
 }
+\dontrun{
 xx <- scale(rnorm(100), center = TRUE, scale = FALSE)
 ss <- mvspectrum(xx)
 ss.n <- normalize_mvspectrum(ss)
@@ -197,7 +198,7 @@ sum(ss.n)
 UU <- whiten(matrix(rnorm(40), ncol = 2))$U
 S.U <- mvspectrum(UU, method = "mvspec")
 mvspectrum2wcov(normalize_mvspectrum(S.U))
-
+}
 
 XX <- matrix(rnorm(1000), ncol = 2)
 SS <- mvspectrum(XX, "mvspec")

@@ -21,6 +21,7 @@ NULL
 #' \code{foreca.EM.E_step} returns the normalized univariate spectral 
 #' density (normalized such that its \code{sum} equals \eqn{0.5}).
 #' @examples
+#' \dontrun{
 #' XX <- diff(log(EuStockMarkets)) * 100
 #' UU <- whiten(XX)$U
 #' ff <- mvspectrum(UU, 'mvspec', normalize = TRUE)
@@ -29,6 +30,7 @@ NULL
 #' 
 #' f.ww0 <- foreca.EM.E_step(ff, ww0)
 #' plot(f.ww0, type = "l")
+#' }
 
 foreca.EM.E_step <- function(f.U, weightvector) {
   
@@ -73,15 +75,15 @@ foreca.EM.E_step <- function(f.U, weightvector) {
 #'    \item \code{value}: corresponding eigenvalue.
 #'    }
 #' @examples
-#' 
+#' \dontrun{
 #' one.step <- foreca.EM.M_step(ff, f.ww0, 
 #'                              entropy.control = list(prior.weight = 0.1))
 #' image(one.step$matrix)
-#' \dontrun{
+#' 
 #' requireNamespace(LICORS)
 #' # if you have the 'LICORS' package use
 #' LICORS::image2(one.step$matrix)
-#' }
+#' 
 #' ww1 <- one.step$vector
 #' f.ww1 <- foreca.EM.E_step(ff, ww1)
 #' 
@@ -94,6 +96,7 @@ foreca.EM.E_step <- function(f.U, weightvector) {
 #' 
 #' Omega(mvspectrum.output = f.ww0) # start
 #' Omega(mvspectrum.output = f.ww1) # improved after one iteration
+#' }
 
 foreca.EM.M_step <- function(f.U, f.current, minimize = TRUE,
                              entropy.control = list()) {
@@ -137,14 +140,14 @@ foreca.EM.M_step <- function(f.U, f.current, minimize = TRUE,
 #' Contrary to \code{foreca.EM.M_step}, \code{foreca.EM.E_and_M_step} only returns the optimal 
 #' weightvector as a numeric. 
 #' @examples
-#' 
+#' \dontrun{
 #' ww0 <- initialize_weightvector(NULL, ff, method = "rnorm")
 #' ww1 <- foreca.EM.E_and_M_step(ww0, ff)
 #' ww0
 #' ww1
 #' barplot(rbind(ww0, ww1), beside = TRUE)
 #' abline(h = 0, col = "blue", lty = 2)
-#' 
+#' }
 
 foreca.EM.E_and_M_step <- function(weightvector, f.U, minimize = TRUE,
                                    entropy.control = list()) {
@@ -186,7 +189,7 @@ foreca.EM.E_and_M_step <- function(weightvector, f.U, minimize = TRUE,
 #' \code{\link{weightvector2entropy_wcov}}
 #' @export
 #' @examples
-#' 
+#' \dontrun{
 #' foreca.EM.h(ww0, ff)       # iteration 0
 #' foreca.EM.h(ww1, ff, ww0)  # min eigenvalue inequality
 #' foreca.EM.h(ww1, ff)       # KL divergence inequality
@@ -195,7 +198,7 @@ foreca.EM.E_and_M_step <- function(weightvector, f.U, minimize = TRUE,
 #' # by definition of Omega, they should equal 1 (modulo rounding errors)
 #' Omega(mvspectrum.output = f.ww0) / 100 + foreca.EM.h(ww0, ff)
 #' Omega(mvspectrum.output = f.ww1) / 100 + foreca.EM.h(ww1, ff)
-#' 
+#' }
 
 foreca.EM.h <- function(weightvector.new, f.U, 
                         weightvector.current = weightvector.new, 

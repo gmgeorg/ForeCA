@@ -36,12 +36,13 @@ Note that the input matrix must have a \strong{real-valued} diagonal and
 \code{NA}s in the lower triangular part.
 }
 \examples{
+\dontrun{
  set.seed(1)
  AA <- matrix(1:4, ncol = 2)
  bb <- matrix(rnorm(2))
  t(bb) \%*\% AA \%*\% bb
  quadratic_form(AA, bb)
-
+}
 
 
 AA <- matrix(1:16, ncol = 4)

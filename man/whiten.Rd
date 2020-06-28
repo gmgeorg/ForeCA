@@ -94,10 +94,12 @@ Similarly, the \emph{inverse square root} is defined as
 }
 \examples{
 
+\dontrun{
 XX <- matrix(rnorm(100), ncol = 2) \%*\% matrix(runif(4), ncol = 2)
 cov(XX)
 UU <- whiten(XX)$U
 cov(UU)
+}
 }
 \references{
 See appendix in \url{http://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf}.

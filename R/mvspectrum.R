@@ -182,6 +182,7 @@ mvspectrum <- function(series,
 #' }
 #' 
 #' @examples
+#' \dontrun{
 #' xx <- scale(rnorm(100), center = TRUE, scale = FALSE)
 #' ss <- mvspectrum(xx)
 #' ss.n <- normalize_mvspectrum(ss)
@@ -190,7 +191,7 @@ mvspectrum <- function(series,
 #' UU <- whiten(matrix(rnorm(40), ncol = 2))$U
 #' S.U <- mvspectrum(UU, method = "mvspec")
 #' mvspectrum2wcov(normalize_mvspectrum(S.U))
-#' 
+#' }
 
 normalize_mvspectrum <- function(mvspectrum.output) {
   

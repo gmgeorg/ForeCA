@@ -30,10 +30,12 @@
 #' @keywords manip
 #' @examples
 #'
+#'\dontrun{
 #' XX <- matrix(rnorm(100), ncol = 2) %*% matrix(runif(4), ncol = 2)
 #' cov(XX)
 #' UU <- whiten(XX)$U
 #' cov(UU)
+#' }
 
 whiten <- function(data) {
 

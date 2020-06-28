@@ -15,12 +15,13 @@
 #' @export
 #' @keywords math univar
 #' @examples
+#' \dontrun{
 #'  set.seed(1)
 #'  AA <- matrix(1:4, ncol = 2)
 #'  bb <- matrix(rnorm(2))
 #'  t(bb) %*% AA %*% bb
 #'  quadratic_form(AA, bb)
-#' 
+#' }
 #' 
 
 quadratic_form <- function(mat, vec) {
