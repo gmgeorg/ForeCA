@@ -114,7 +114,7 @@ foreca.EM.one_weightvector <- function(U, f.U = NULL,
       if (abs.change > 0) {
         warning.msg <- paste0("Spectral entropy increased (!) in iteration ",
                               iter, " of foreca.EM.one_weightvector.\n ",
-                              "If this is not the last iteration, please check results.")
+                              "If this is not the last iteration, check results.")
         warning.iter <- iter
       } else {
         # decrease from previous iteration

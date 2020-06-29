@@ -104,8 +104,7 @@ mvspectrum <- function(series,
   } else if (method == "pgram") {
     out <- mvpgram(series)
   } else {
-    stop("Method '", method, "' is not implemented.\n", 
-         "Please specify other method.")
+    stop("Method '", method, "' is not implemented.")
   }
   
   if (smoothing && num.series == 1) {
@@ -118,7 +117,7 @@ mvspectrum <- function(series,
       dim(out) <- dim.out
     } else {
       warning("Spectrum was not smoothed since this requires the 'mgcv' package.\n", 
-              "Please install it.")
+              "Use install.packages('mgcv') to install it.")
     }
   }
   
@@ -298,7 +297,7 @@ check_mvspectrum_normalized <- function(f.U, check.attribute.only = TRUE) {
 #' @export
 #' @description
 #' \code{mvpgram} computes the multivariate periodogram estimate using
-#' bare-bone multivariate fft (\code{\link[stats]{mvfft}}). Please use
+#' bare-bone multivariate fft (\code{\link[stats::fft]{stats::mvfft}}). Use
 #' \code{mvspectrum(..., method = 'pgram')} instead of \code{mvpgram} directly.
 #' 
 #' This function is merely included to have one method that does not

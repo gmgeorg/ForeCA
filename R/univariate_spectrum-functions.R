@@ -37,7 +37,7 @@ get_spectrum_from_mvspectrum <- function(mvspectrum.output,
     if (!isTRUE(tmp)) {
       cat(tmp)
       warning("The multivariate spectrum has imaginary elements in the diagonal.", 
-              " Please check your spectrum estimates again (and set 'inverse = FALSE'",
+              " Check spectrum estimates again (and set 'inverse = FALSE'",
               " in 'normalize_mvspectrum' if you have used this function).")
     }
     return(Re(all.spectra[, which]))
@@ -93,7 +93,7 @@ spectrum_of_linear_combination <- function(mvspectrum.output, beta) {
     if (!isTRUE(tmp)) {
       cat(tmp)
       warning("The linear combination of spectra has imaginary values.",
-              " Please check your multivariate spectrum estimates again ")
+              " Check multivariate spectrum estimates again.")
     }
     spec.dens.est <- Re(spec.dens.est)
     

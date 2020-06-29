@@ -96,7 +96,7 @@ foreca <- function(series, n.comp = 2, algorithm.control = list(type = "EM"),
   # number of components must be smaller or equal to number of time series
   if (n.comp > num.series) {
     stop("You can not extract ", n.comp, " components from only ", num.series, " time series.\n",
-         "Please reduce n.comp to at most ", num.series, ".")
+         "Reduce n.comp <=", num.series, ".")
   }
 
   PW.all <- whiten(series)
@@ -317,7 +317,7 @@ foreca.one_weightvector <- function(U, f.U = NULL,
   }  # end of ii
 
   if (!converged) {
-    warning("Convergence has not been reached. Please try again.")
+    warning("Convergence has not been reached. Try again.")
   }
 
   wv.trace.best <- one.results.best$weightvector.trace
@@ -492,7 +492,7 @@ foreca.multiple_weightvectors <- function(U,
     warning("'foreca.multiple_weightvectors()' did not extract ForeCs in order of ",
             "decreasing forecastability; ",
             "loadings and sources were re-ordered accordingly. ",
-            "Please check results.")
+            "Check results.")
     cat("Original order:\n")
     cat("\t", paste(omega.order, collapse = ", "), "\n")
 

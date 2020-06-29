@@ -5,7 +5,7 @@
 #' (class \code{"foreca.one_weightvector"}).
 #' @param x,object an object of class \code{"foreca.one_weightvector"}.
 #' @param ... additional arguments passed to 
-#' \code{\link[graphics]{plot}}, or \code{\link[base]{summary}}.
+#' \code{\link[base]{plot}}, or \code{\link[base]{summary}}.
 #' @param alpha significance level for testing white noise in 
 #' \code{\link[stats]{Box.test}}; default: \eqn{0.05}.
 #' @param lag integer; how many lags to test in \code{\link[stats]{Box.test}}; 

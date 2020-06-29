@@ -6,15 +6,15 @@
 #' 
 #' \strong{Important:} This implementation of SFA is just the most basic
 #' version; it is merely included here for convenience in 
-#' \code{\link{initialize_weightvector}}.  If you want to use SFA in R please
-#' use the \pkg{rSFA} package, which has many more advanced and efficient implementations
-#' of SFA.  \code{sfa()} here corresponds to \code{sfa1} in the \pkg{rSFA} package.
+#' \code{\link{initialize_weightvector}}.  If you want to actually use full functionality of SFA in R 
+#' use the \pkg{rSFA} package, which has a much more advanced and efficient implementations.
+#' \code{sfa()} here corresponds to \code{\link[rSFA]{sfa1}}.
 #' 
 #' @details
-#' Slow Feature Analysis (SFA) finds \emph{slow} signals (see References below),
-#' and can be quickly (and analytically) computed solving a generalized eigen-value
-#' problem.   For ForeCA it is important to know that SFA is equivalent to
-#' finding the signal with largest lag \eqn{1} autocorrelation.
+#' Slow Feature Analysis (SFA) finds \emph{slow} signals (see References below). The problem has an
+#' analytic solution and thus can be computed quickly using generalized eigen-value solvers.
+#' For ForeCA it is important to know that SFA is equivalent to
+#' finding a linear combination signal with largest lag \eqn{1} autocorrelation.
 #' 
 #' The disadvantage of SFA for forecasting is that, e.g., white noise (WN) 
 #' is ranked higher than an AR(1) with negative autocorrelation coefficient 

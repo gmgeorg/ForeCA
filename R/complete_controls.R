@@ -43,7 +43,7 @@ complete_algorithm_control <- function(algorithm.control =
     matched <- match(names(algorithm.control), valid.entries)
     if (any(is.na(matched))) {
       print(names(algorithm.control[is.na(matched)]))
-      stop("'algorithm.control' has unvalid entries (see above). Please remove them from the list.")
+      stop("'algorithm.control' has unvalid entries (see above). Remove them to proceed.")
     }
   }
             
@@ -108,7 +108,7 @@ complete_entropy_control <- function(entropy.control =
     matched <- match(names(entropy.control), valid.entries)
     if (any(is.na(matched))) {
       print(names(entropy.control[is.na(matched)]))
-      stop("'entropy.control' has unvalid entries (see above). Please remove them from the list.")
+      stop("'entropy.control' has unvalid entries (see above). Remove them to proceed.")
     }
   }
   
@@ -190,7 +190,7 @@ complete_spectrum_control <- function(spectrum.control =
     matched <- match(names(spectrum.control), valid.entries)
     if (any(is.na(matched))) {
       print(names(spectrum.control[is.na(matched)]))
-      stop("'spectrum.control' has unvalid entries (see above). Please remove them from the list.")
+      stop("'spectrum.control' has unvalid entries (see above). Remove them to proceed.")
     }
   }
   
@@ -213,7 +213,7 @@ complete_spectrum_control <- function(spectrum.control =
   if (spectrum.control$method == "mvspec") {
     if (!requireNamespace("astsa", quietly = TRUE)) {
       stop("For method '", spectrum.control$method, "' you need the 'astsa' package.\n",
-           "Please install it or user another method.")
+           "Install it or user another method.")
     }
   }
   

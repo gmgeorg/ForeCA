@@ -40,7 +40,7 @@ spectral entropy of $y_t$, i.e., the entropy of the spectral density
 $f_y(\lambda)$: high entropy means low forecastability; low entropy signals are
 easy to forecast.
 
-For more details please see the ForeCA paper(s):
+For more details see the original ForeCA paper:
 ```{r cite-ForeCA}
 citation("ForeCA")
 ```

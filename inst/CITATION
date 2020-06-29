@@ -1,4 +1,4 @@
-citHeader("If you use 'ForeCA' in your publication please cite both the 'ForeCA' R package as well as the ForeCA article in JMLR:")
+citHeader("If you use 'ForeCA' in your publication we ask you to cite both the 'ForeCA' R package as well as the original ForeCA article in JMLR:")
 
 year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date, perl = TRUE)
 vers <- paste("R package version", meta$Version)

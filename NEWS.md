@@ -83,7 +83,7 @@ Main notable change for users: to specify spectrum and entropy estimation use
 `spectrum.control` and `entropy.control`.  Otherwise no relevant visible
 user-interface changes.
 
-Please also review the manual; it has been _very_ thoroughly reviewed.
+Also review the manual; it has been _very_ thoroughly reviewed.
 
 ### New
 

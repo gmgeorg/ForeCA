@@ -5,8 +5,8 @@
 #' (class \code{"foreca"}).
 #' @param x,object an object of class \code{"foreca"}.
 #' @param ... additional arguments passed to 
-#' \code{\link[stats]{biplot.princomp}}, \code{\link[stats]{biplot.default}},
-#' \code{\link[graphics]{plot}}, or \code{\link[base]{summary}}.
+#' \code{\link[stats]{biplot.princomp}}, \code{\link[stats]{biplot}},
+#' \code{\link[base]{plot}}, or \code{\link[base]{summary}}.
 #' @param alpha significance level for testing white noise in 
 #' \code{\link[stats]{Box.test}}; default: \eqn{0.05}.
 #' @param lag integer; how many lags to test in \code{\link[stats]{Box.test}}; 
@@ -77,9 +77,9 @@ print.foreca <- function(x, ...) {
   
   if (omega.incr.abs < 0) {
     warning("ForeCA converged to local optimum solution.\n\t ",
-            "Please run foreca() again and increase the number of ",
+            "Run foreca() again and increase the number of ",
             "random starts to avoid local minima.\n",
-            "See also the 'Warning' section under ?foreca.")
+            "See also the 'Warning' section in `?foreca`.")
   }
   
   cat("This is an absolute increase of ", round(omega.incr.abs, 2), " percentage points ",
