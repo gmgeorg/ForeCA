@@ -11,14 +11,14 @@
 \method{plot}{foreca.one_weightvector}(x, main = "", cex.lab = 1.1, ...)
 }
 \arguments{
-\item{lag}{integer; how many lags to test in \code{\link[stats]{Box.test}}; 
+\item{lag}{integer; how many lags to test in \code{Box.test}; 
 default: \eqn{10}.}
 
 \item{alpha}{significance level for testing white noise in 
-\code{\link[stats]{Box.test}}; default: \eqn{0.05}.}
+\code{Box.test}; default: \eqn{0.05}.}
 
 \item{...}{additional arguments passed to 
-\code{\link[graphics]{plot}}, or \code{\link[base]{summary}}.}
+\code{\link[base]{plot}}, or \code{\link[base]{summary}}.}
 
 \item{x, object}{an object of class \code{"foreca.one_weightvector"}.}
 

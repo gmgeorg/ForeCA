@@ -125,7 +125,7 @@ are purely imaginary (real part equals 0) and thus add up to 0.
 (see \code{\link{normalize_mvspectrum}} for the requirements).
 
 \code{mvpgram} computes the multivariate periodogram estimate using
-bare-bone multivariate fft (\code{\link[stats]{mvfft}}). Please use
+bare-bone multivariate fft (\code{\link[stats::fft]{stats::mvfft}}). Use
 \code{mvspectrum(..., method = 'pgram')} instead of \code{mvpgram} directly.
 
 This function is merely included to have one method that does not

@@ -7,8 +7,8 @@
 #' @param ... additional arguments passed to 
 #' \code{\link[base]{plot}}, or \code{\link[base]{summary}}.
 #' @param alpha significance level for testing white noise in 
-#' \code{\link[stats]{Box.test}}; default: \eqn{0.05}.
-#' @param lag integer; how many lags to test in \code{\link[stats]{Box.test}}; 
+#' \code{Box.test}; default: \eqn{0.05}.
+#' @param lag integer; how many lags to test in \code{Box.test}; 
 #' default: \eqn{10}.
 #' @examples
 #' # see examples in 'foreca.one_weightvector'

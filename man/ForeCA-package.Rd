@@ -17,8 +17,7 @@ less forecastable, lower entropy is more forecastable.
 The main function \code{\link{foreca}} runs ForeCA on a
 multivariate time series  \eqn{\mathbf{X}_t}.
 
-Please consult the \code{NEWS} file for a list of changes to previous
-versions of this package.
+Consult \code{NEWS.md} for a history of release notes.
 }
 \examples{
 XX <- ts(diff(log(EuStockMarkets)))

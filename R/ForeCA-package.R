@@ -12,7 +12,7 @@
 #' The main function \code{\link{foreca}} runs ForeCA on a
 #' multivariate time series  \eqn{\mathbf{X}_t}.
 #'
-#' Consult \code{NEWS.md} for a history of relaease notes.
+#' Consult \code{NEWS.md} for a history of release notes.
 #'
 #' @import MASS stats graphics reshape2 utils
 #' @name ForeCA-package

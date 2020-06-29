@@ -135,8 +135,8 @@ can be different.
 
 
 In general, these differences are small and have no relevant implications
-for estimating ForeCs.  However, especially for rare occasions, the obtained ForeCs can have
-smaller \code{Omega} than the maximum \code{Omega} of the original series.
+for estimating ForeCs.  However, in rare occasions the obtained ForeCs can have
+smaller \code{Omega} than the maximum \code{Omega} across all original series.
 In such a case users should not re-estimate \eqn{\Omega} from the resulting
 ForeCs \eqn{\mathbf{F}_t}, but access them via \code{$Omega} provided
 by \code{'foreca'} output (the univariate estimates are stored in \code{$Omega.univ}).

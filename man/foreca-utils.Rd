@@ -17,15 +17,15 @@
 \method{plot}{foreca}(x, lag = 10, alpha = 0.05, ...)
 }
 \arguments{
-\item{lag}{integer; how many lags to test in \code{\link[stats]{Box.test}}; 
+\item{lag}{integer; how many lags to test in \code{Box.test}; 
 default: \eqn{10}.}
 
 \item{alpha}{significance level for testing white noise in 
-\code{\link[stats]{Box.test}}; default: \eqn{0.05}.}
+\code{Box.test}; default: \eqn{0.05}.}
 
 \item{...}{additional arguments passed to 
-\code{\link[stats]{biplot.princomp}}, \code{\link[stats]{biplot.default}},
-\code{\link[graphics]{plot}}, or \code{\link[base]{summary}}.}
+\code{\link[stats]{biplot.princomp}}, \code{\link[stats]{biplot}},
+\code{\link[base]{plot}}, or \code{\link[base]{summary}}.}
 
 \item{x, object}{an object of class \code{"foreca"}.}
 }
