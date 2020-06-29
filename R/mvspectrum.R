@@ -297,7 +297,7 @@ check_mvspectrum_normalized <- function(f.U, check.attribute.only = TRUE) {
 #' @export
 #' @description
 #' \code{mvpgram} computes the multivariate periodogram estimate using
-#' bare-bone multivariate fft (\code{\link[stats::fft]{stats::mvfft}}). Use
+#' bare-bone multivariate fft (\code{\link[stats:fft]{mvfft}}). Use
 #' \code{mvspectrum(..., method = 'pgram')} instead of \code{mvpgram} directly.
 #' 
 #' This function is merely included to have one method that does not
