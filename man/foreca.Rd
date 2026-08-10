@@ -73,7 +73,7 @@ solution \eqn{\mathbf{w}_i^*} will be shown and updated for each iteration
 \value{
 An object of class \code{foreca}, which is similar to the output from \code{\link[stats]{princomp}},
 with the following components (amongst others):
-\itemize{
+\describe{
 \item{\code{center}:}{ sample mean \eqn{\widehat{\mu}_X} of each \code{series},}
 \item{\code{whitening}:}{ whitening matrix of size \eqn{K \times K}
 from \code{\link{whiten}}: \eqn{\mathbf{U}_t = (\mathbf{X}_t - \widehat{\mu}_X) \cdot whitening};
@@ -176,6 +176,6 @@ plot(ff$scores)
 \references{
 Goerg, G. M. (2013). \dQuote{Forecastable Component Analysis}.
 Journal of Machine Learning Research (JMLR) W&CP 28 (2): 64-72, 2013.
-Available at \url{http://jmlr.org/proceedings/papers/v28/goerg13.html}.
+Available at \url{https://proceedings.mlr.press/v28/goerg13.html}.
 }
 \keyword{iteration}

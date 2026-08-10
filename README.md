@@ -5,7 +5,7 @@
 
 **ForeCA** implements *Forecastable component analysis* in R.  For details on
 algorithm & methodology see [*Forecastable Component Analysis*, JMLR, Goerg
-(2013)](http://proceedings.mlr.press/v28/goerg13.pdf).
+(2013)](https://proceedings.mlr.press/v28/goerg13.pdf).
 
 
 **In a nutshell:** *ForeCA* finds linear combinations of multivariate time

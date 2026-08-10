@@ -1,5 +1,32 @@
 # ForeCA Release Notes
 
+## 0.2.8
+
+Maintenance release to address `R CMD check` issues reported by CRAN.
+
+* fix "Lost braces" `Rd` NOTEs in `?foreca` and `?initialize_weightvector` by using
+  `\describe{}` instead of `\itemize{}` for `\item{label}{description}` lists.
+* modernize `inst/CITATION`: replace the deprecated `citEntry()` / `personList()` with
+  `bibentry()` / `c(person(...))`.
+* update stale references: the JMLR proceedings link now points to
+  <https://proceedings.mlr.press/v28/goerg13.html> (the old `jmlr.org/proceedings` URL
+  returned 404), plus `http` -> `https` and other link fixes in `?whiten`,
+  `?discrete_entropy` and the vignette.
+* add `.Rbuildignore` so development-only files are no longer shipped in the tarball.
+* document the package with `"_PACKAGE"` instead of the deprecated `@docType package`.
+* regenerate documentation with **roxygen2** 7.3.2.
+* drop unused `Suggests`: **fBasics** and **nlme**.
+* drop unused `Imports`: **reshape2** (no `reshape2` function was called anywhere; plotting uses
+  `graphics::matplot` directly). One fewer dependency, and **reshape2** is superseded upstream.
+* fix documented default of `tol` in `?complete-controls`.  Whenever `tol` is not supplied --
+  i.e. in essentially every call -- `complete_algorithm_control()` fills in `tol = 1e-06`, not
+  the `1e-03` that was previously documented.  **No behavior change**: the tight tolerance is
+  deliberate and quality-improving, since a looser one stops the EM algorithm early and yields
+  measurably less forecastable components.  On `EuStockMarkets` (`n.comp = 4`, fixed seed),
+  relaxing `tol` to `1e-03` costs about 0.2 percentage points of `Omega` on the leading ForeC
+  (6.34 -> 6.13).  Only a bare `complete_algorithm_control()` call with no arguments uses the
+  formal-argument default of `1e-03`.
+
 ## 0.2.7
 
 * add `pspectrum` from **psd** package as a replacement for `sapa::SDF`.  Not recommended for

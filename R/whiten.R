@@ -23,9 +23,9 @@
 #' \code{whiten} returns a list with the whitened data, the transformation,
 #' and other useful quantities.
 #' @references
-#' See appendix in \url{http://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf}.
+#' See appendix in \url{https://cave.cs.toronto.edu/kriz/learning-features-2009-TR.pdf}.
 #'
-#' See \url{http://ufldl.stanford.edu/wiki/index.php/Implementing_PCA/Whitening}.
+#' See \url{http://ufldl.stanford.edu/tutorial/unsupervised/PCAWhitening/}.
 #' @export
 #' @keywords manip
 #' @examples

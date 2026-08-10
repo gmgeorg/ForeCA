@@ -1,8 +1,8 @@
 Package: ForeCA
 Type: Package
 Title: Forecastable Component Analysis
-Version: 0.2.7
-Date: 2020-06-21
+Version: 0.2.8
+Date: 2026-08-10
 Authors@R: 
     person(given = "Georg M.",
            family = "Goerg",
@@ -24,17 +24,14 @@ Imports:
     astsa (>= 1.10),
     MASS,
     graphics,
-    reshape2 (>= 1.4.4),
     utils
 Suggests:
     psd,
-    fBasics,
     knitr,
     markdown,
     mgcv,
-    nlme (>= 3.1-64),
     testthat (>= 2.0.0),
-    rSFA,
-RoxygenNote: 7.1.1
+    rSFA
+RoxygenNote: 7.3.2
 Encoding: UTF-8
 VignetteBuilder: knitr

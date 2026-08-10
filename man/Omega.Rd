@@ -84,7 +84,7 @@ Omega(yy, spectrum.control = list(method = "mvspec"))
 \references{
 Goerg, G. M. (2013). \dQuote{Forecastable Component
  Analysis}. Journal of Machine Learning Research (JMLR) W&CP 28 (2): 64-72, 2013.
- Available at \url{http://jmlr.org/proceedings/papers/v28/goerg13.html}.
+ Available at \url{https://proceedings.mlr.press/v28/goerg13.html}.
 }
 \seealso{
 \code{\link{spectral_entropy}}, \code{\link{discrete_entropy}},

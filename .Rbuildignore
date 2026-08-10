@@ -1,0 +1,16 @@
+^\.Rbuildignore$
+^\.gitignore$
+^dev_setup\.R$
+^\.github$
+^\.claude$
+^CLAUDE\.md$
+^\.Rproj\.user$
+^.*\.Rproj$
+^docs$
+^revdep$
+^cran-comments\.md$
+^codecov\.yml$
+^ForeCA\.Rcheck$
+^.*\.tar\.gz$
+~$
+\.Rhistory$
