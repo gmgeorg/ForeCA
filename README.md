@@ -1,6 +1,10 @@
 # ForeCA R package
 
-[![](https://cranlogs.r-pkg.org/badges/ForeCA)](https://cran.r-project.org/package=ForeCA)
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/gmgeorg/ForeCA/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/gmgeorg/ForeCA/actions/workflows/R-CMD-check.yaml)
+[![CRAN release](https://www.r-pkg.org/badges/version/ForeCA)](https://cran.r-project.org/package=ForeCA)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/ForeCA)](https://cran.r-project.org/package=ForeCA)
+<!-- badges: end -->
 
 
 **ForeCA** implements *Forecastable component analysis* in R.  For details on

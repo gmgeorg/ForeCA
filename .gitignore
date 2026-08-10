@@ -3,6 +3,7 @@
 
 # Don't ignore specific files (the specific R package structure)
 !README.md
+!/.github
 !/R
 !/src
 !/man
