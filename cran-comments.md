@@ -19,18 +19,34 @@ unchanged from 0.2.7. See `NEWS.md` for the full list.
 
 ## Test environments
 
-* local macOS (aarch64-apple-darwin20), R 4.4.2 -- 0 errors, 0 warnings, 0 notes
-  (locally two additional NOTEs appear that are environmental only: a 403 from
-  stats.stackexchange.com, which rejects non-browser user agents, and
-  "unable to verify current time" from the offline check host. Neither reproduces
-  on win-builder.)
+* local macOS (aarch64-apple-darwin20), R 4.4.2
 * win-builder, R Under development (unstable) (2026-08-09 r90385 ucrt) -- Status: OK
+* win-builder, R 4.5.3 (oldrelease) -- Status: 1 NOTE (see below)
 * win-builder, R release -- submitted
-* win-builder, R oldrelease -- submitted
 
 ## R CMD check results
 
-Status: OK on win-builder R-devel. 0 errors, 0 warnings, 0 notes.
+0 errors, 0 warnings.
+
+`Status: OK` on win-builder R-devel. On win-builder R-oldrelease there is one NOTE:
+
+```
+Found the following (possibly) invalid URLs:
+  URL: https://scholar.google.com/scholar?...cites=5674198772479433271
+    From: README.md
+    Status: 403
+  URL: https://stats.stackexchange.com/questions/126829/how-to-determine-forecastability-of-time-series
+    From: README.md
+    Status: 403
+```
+
+Both URLs are valid and load correctly in a browser; Google Scholar and Stack Exchange
+return 403 to automated (non-browser) user agents. We have verified both by hand and
+would ask that this NOTE be disregarded. The same check reports OK on R-devel.
+
+Locally an additional environmental NOTE appears -- "checking for future file
+timestamps ... unable to verify current time" -- because the local check host has no
+network access to the world-clock service. It does not reproduce on win-builder.
 
 ## Reverse dependencies
 
