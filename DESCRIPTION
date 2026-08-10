@@ -9,6 +9,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "im@gmge.org")
 URL: https://github.com/gmgeorg/ForeCA
+BugReports: https://github.com/gmgeorg/ForeCA/issues
 Description: Implementation of Forecastable Component Analysis ('ForeCA'),
     including main algorithms and auxiliary function (summary, plotting, etc.) to
     apply 'ForeCA' to multivariate time series data. 'ForeCA' is a novel dimension
@@ -35,3 +36,4 @@ Suggests:
 RoxygenNote: 7.3.2
 Encoding: UTF-8
 VignetteBuilder: knitr
+Config/testthat/edition: 2

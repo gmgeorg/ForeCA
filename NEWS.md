@@ -13,6 +13,8 @@ Maintenance release to address `R CMD check` issues reported by CRAN.
   returned 404), plus `http` -> `https` and other link fixes in `?whiten`,
   `?discrete_entropy` and the vignette.
 * add `.Rbuildignore` so development-only files are no longer shipped in the tarball.
+* add a `BugReports` field pointing at the GitHub issue tracker, and run `R CMD check` on
+  every push/PR via GitHub Actions.
 * document the package with `"_PACKAGE"` instead of the deprecated `@docType package`.
 * regenerate documentation with **roxygen2** 7.3.2.
 * drop unused `Suggests`: **fBasics** and **nlme**.
