@@ -14,15 +14,11 @@
 #'
 #' Consult \code{NEWS.md} for a history of release notes.
 #'
-#' @import MASS stats graphics reshape2 utils
-#' @name ForeCA-package
-#' @aliases ForeCA-package ForeCA
-#' @docType package
-#' @author Author and maintainer: Georg M. Goerg <im@@gmge.org>
+#' @import MASS stats graphics utils
 #' @references
 #' Goerg, G. M. (2013). \dQuote{Forecastable Component Analysis}.
 #' Journal of Machine Learning Research (JMLR) W&CP 28 (2): 64-72, 2013.
-#' Available at \url{http://jmlr.org/proceedings/papers/v28/goerg13.html}.
+#' Available at \url{https://proceedings.mlr.press/v28/goerg13.html}.
 #' @keywords package
 #' @examples
 #' XX <- ts(diff(log(EuStockMarkets)))
@@ -38,7 +34,7 @@
 #' summary(ff)
 #' }
 #'
-NULL
+"_PACKAGE"
 
 
 

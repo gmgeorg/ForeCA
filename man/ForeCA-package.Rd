@@ -2,8 +2,8 @@
 % Please edit documentation in R/ForeCA-package.R
 \docType{package}
 \name{ForeCA-package}
-\alias{ForeCA-package}
 \alias{ForeCA}
+\alias{ForeCA-package}
 \title{Implementation of Forecastable Component Analysis (ForeCA)}
 \description{
 Forecastable Component Analysis (ForeCA) is a novel dimension reduction
@@ -37,9 +37,17 @@ summary(ff)
 \references{
 Goerg, G. M. (2013). \dQuote{Forecastable Component Analysis}.
 Journal of Machine Learning Research (JMLR) W&CP 28 (2): 64-72, 2013.
-Available at \url{http://jmlr.org/proceedings/papers/v28/goerg13.html}.
+Available at \url{https://proceedings.mlr.press/v28/goerg13.html}.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/gmgeorg/ForeCA}
+}
+
 }
 \author{
-Author and maintainer: Georg M. Goerg <im@gmge.org>
+\strong{Maintainer}: Georg M. Goerg \email{im@gmge.org}
+
 }
 \keyword{package}

@@ -12,8 +12,8 @@ complete_algorithm_control(
 )
 
 complete_entropy_control(
-  entropy.control = list(base = NULL, method = "MLE", prior.probs = NULL, prior.weight
-    = 0.001, threshold = 0),
+  entropy.control = list(base = NULL, method = "MLE", prior.probs = NULL, prior.weight =
+    0.001, threshold = 0),
   num.outcomes
 )
 
@@ -42,8 +42,11 @@ list does not already set this value.
 
 \item{max.iter}{maximum number of iterations; default: \code{50}.}
 \item{num.starts}{number of random starts to avoid local optima; default: \code{10}.}
-\item{tol}{tolerance for when convergence is reached in any \emph{iterative} 
-ForeCA algorithm;  default: \code{1e-03}.}
+\item{tol}{tolerance for when convergence is reached in any \emph{iterative}
+ForeCA algorithm; default: \code{1e-06} whenever \code{tol} is not supplied.  This tight
+default is intentional -- a looser tolerance stops the EM algorithm early and yields
+measurably less forecastable components.  (Calling \code{complete_algorithm_control()}
+with no arguments at all instead uses the formal default \code{tol = 1e-03}.)}
 \item{type}{string; type of algorithm. Default: \code{'EM'}.}
 
 \code{complete_entropy_control} returns a list with:

@@ -13,10 +13,13 @@
 !DESCRIPTION
 !NAMESPACE
 !NEWS.md
+!CLAUDE.md
+!dev_setup.R
+!cran-comments.md
 !.gitignore
+!.Rbuildignore
 
 # Add specific files again to ignore
 *~
 .Rhistory
 /tests/testthat/Rplots.pdf
-.Rbuildignore

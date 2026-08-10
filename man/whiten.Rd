@@ -102,9 +102,9 @@ cov(UU)
 }
 }
 \references{
-See appendix in \url{http://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf}.
+See appendix in \url{https://cave.cs.toronto.edu/kriz/learning-features-2009-TR.pdf}.
 
-See \url{http://ufldl.stanford.edu/wiki/index.php/Implementing_PCA/Whitening}.
+See \url{http://ufldl.stanford.edu/tutorial/unsupervised/PCAWhitening/}.
 }
 \keyword{manip}
 \keyword{math}

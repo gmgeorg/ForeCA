@@ -122,7 +122,7 @@ for (nn in colnames(ret)) {
 Not surprisingly the PACF shows only very small partial correlations, since
 these are stock market return and we should not expect see too large
 correlations over time (cf. ["no arbitrage"
-hypothesis](http://en.wikipedia.org/wiki/Arbitrage)).
+hypothesis](https://en.wikipedia.org/wiki/Arbitrage)).
 
 More specifically, we can estimate ForeCA measure of forecastability, $\Omega$,
 for each series:

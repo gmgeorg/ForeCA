@@ -84,7 +84,7 @@ discrete_entropy(c(1, 0, 0))
 \references{
 Archer E., Park I. M., Pillow J.W. (2014). \dQuote{Bayesian Entropy Estimation for
 Countable Discrete Distributions}. Journal of Machine Learning Research (JMLR) 15,
-2833-2868. Available at \url{http://jmlr.org/papers/v15/archer14a.html}.
+2833-2868. Available at \url{https://www.jmlr.org/papers/v15/archer14a.html}.
 }
 \seealso{
 \code{\link{continuous_entropy}}

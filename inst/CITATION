@@ -3,23 +3,25 @@ citHeader("If you use 'ForeCA' in your publication we ask you to cite both the '
 year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date, perl = TRUE)
 vers <- paste("R package version", meta$Version)
 
-citEntry(entry = "Manual",
+bibentry(bibtype = "Manual",
          title = "ForeCA: An R package for Forecastable Component Analysis",
-         author = personList(as.person("Georg M. Goerg")),
+         author = c(person("Georg M.", "Goerg")),
          year = year,
          note = vers,
+         url = "https://CRAN.R-project.org/package=ForeCA",
          textVersion =
          paste0("Georg M. Goerg (",
                 year,
                 "). ForeCA: An R package for Forecastable Component Analysis. ",
                 vers, "."))
 
-citEntry(entry = "inproceedings",
+bibentry(bibtype = "InProceedings",
          title = "Forecastable Component Analysis",
-         author = personList(as.person("Georg M. Goerg")),
+         author = c(person("Georg M.", "Goerg")),
          year = "2013",
          booktitle = "JMLR, W&CP",
          volume = "28",
          pages = "64-72",
+         url = "https://proceedings.mlr.press/v28/goerg13.html",
          textVersion =
          paste0("Georg M. Goerg: Forecastable Component Analysis. JMLR, W&CP (2) 2013: 64-72."))

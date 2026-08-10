@@ -19,8 +19,8 @@
 #' @details
 #' The \code{method} argument specifies the heuristics that is used to get a good
 #' starting vector \eqn{\mathbf{w}_0}:
-#' 
-#' \itemize{
+#'
+#' \describe{
 #'  \item{\code{"max"}}{ vector with all \eqn{0}s, but a \eqn{1} at the position
 #'  of the maximum forecastable series in \code{U}.}
 #'  \item{\code{"rcauchy"}}{ random start using \code{rcauchy(k)}.}
