@@ -43,6 +43,7 @@ Available at \url{https://proceedings.mlr.press/v28/goerg13.html}.
 Useful links:
 \itemize{
   \item \url{https://github.com/gmgeorg/ForeCA}
+  \item Report bugs at \url{https://github.com/gmgeorg/ForeCA/issues}
 }
 
 }

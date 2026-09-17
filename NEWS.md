@@ -1,5 +1,14 @@
 # ForeCA Release Notes
 
+## 0.2.8-1
+
+Follow-up to a newer `R-devel` check flagged after the 0.2.8 submission.
+
+* mark `?common-arguments` (an internal, non-callable Rd topic used only via
+  `@inheritParams` to share argument docs across functions) with `@keywords internal`,
+  fixing the `R CMD check` NOTE "Rd files without \usage: common-arguments.Rd \arguments
+  should not be documented without \usage" seen on a newer `R-devel` build.
+
 ## 0.2.8
 
 Maintenance release to address `R CMD check` issues reported by CRAN.
