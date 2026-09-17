@@ -1,8 +1,8 @@
 Package: ForeCA
 Type: Package
 Title: Forecastable Component Analysis
-Version: 0.2.8
-Date: 2026-08-10
+Version: 0.2.8-1
+Date: 2026-08-22
 Authors@R: 
     person(given = "Georg M.",
            family = "Goerg",

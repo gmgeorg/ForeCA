@@ -2,7 +2,8 @@
 #' @name common-arguments
 #' @description
 #' Common arguments used in several functions in this package.
-#' 
+#' @keywords internal
+#'
 #' @param series a \eqn{T \times K} array with \code{T} observations from the 
 #' \eqn{K}-dimensional time series \eqn{\mathbf{X}_t}. Can be a \code{matrix}, \code{data.frame}, 
 #' or a multivariate \code{ts} object.
